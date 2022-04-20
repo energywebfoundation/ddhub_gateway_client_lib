@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.delete_topic import DeleteTopic
+import ddhub_gateway_client
+from ddhub_gateway_client.model.delete_topic import DeleteTopic
 
 
 class TestDeleteTopic(unittest.TestCase):

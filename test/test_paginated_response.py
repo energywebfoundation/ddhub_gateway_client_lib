@@ -11,10 +11,10 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.get_topic_dto import GetTopicDto
+import ddhub_gateway_client
+from ddhub_gateway_client.model.get_topic_dto import GetTopicDto
 globals()['GetTopicDto'] = GetTopicDto
-from openapi_client.model.paginated_response import PaginatedResponse
+from ddhub_gateway_client.model.paginated_response import PaginatedResponse
 
 
 class TestPaginatedResponse(unittest.TestCase):

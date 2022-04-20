@@ -1,4 +1,4 @@
-# openapi_client.TopicsApi
+# ddhub_gateway_client.TopicsApi
 
 All URIs are relative to *http://localhost*
 
@@ -26,19 +26,19 @@ Method | HTTP request | Description
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import topics_api
-from openapi_client.model.delete_topic import DeleteTopic
+import ddhub_gateway_client
+from ddhub_gateway_client.api import topics_api
+from ddhub_gateway_client.model.delete_topic import DeleteTopic
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     id = "62545547fe37f174d7715ff3" # str | id of the topic
@@ -47,7 +47,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.topics_controller_delete_topics(id)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_delete_topics: %s\n" % e)
 ```
 
@@ -93,19 +93,19 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import topics_api
-from openapi_client.model.delete_topic import DeleteTopic
+import ddhub_gateway_client
+from ddhub_gateway_client.api import topics_api
+from ddhub_gateway_client.model.delete_topic import DeleteTopic
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     id = "62545547fe37f174d7715ff3" # str | id of the topic
@@ -115,7 +115,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.topics_controller_delete_topics_by_version(id, version)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_delete_topics_by_version: %s\n" % e)
 ```
 
@@ -162,19 +162,19 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import topics_api
-from openapi_client.model.post_topic_dto import PostTopicDto
+import ddhub_gateway_client
+from ddhub_gateway_client.api import topics_api
+from ddhub_gateway_client.model.post_topic_dto import PostTopicDto
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     id = "62545547fe37f174d7715ff3" # str | id of the topic
@@ -184,7 +184,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.topics_controller_get_topic_history_by_id_and_version(id, version_number)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_get_topic_history_by_id_and_version: %s\n" % e)
 ```
 
@@ -229,19 +229,19 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import topics_api
-from openapi_client.model.paginated_response import PaginatedResponse
+import ddhub_gateway_client
+from ddhub_gateway_client.api import topics_api
+from ddhub_gateway_client.model.paginated_response import PaginatedResponse
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     owner = "ddhub.apps.energyweb.iam.ewc" # str | 
@@ -254,7 +254,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.topics_controller_get_topics(owner)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_get_topics: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -262,7 +262,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.topics_controller_get_topics(owner, limit=limit, name=name, page=page, tags=tags)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_get_topics: %s\n" % e)
 ```
 
@@ -310,19 +310,19 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import topics_api
-from openapi_client.model.paginated_search_topic_response import PaginatedSearchTopicResponse
+import ddhub_gateway_client
+from ddhub_gateway_client.api import topics_api
+from ddhub_gateway_client.model.paginated_search_topic_response import PaginatedSearchTopicResponse
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     keyword = "Topic_JSON_V12" # str | 
@@ -333,7 +333,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.topics_controller_get_topics_by_search(keyword)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_get_topics_by_search: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -341,7 +341,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.topics_controller_get_topics_by_search(keyword, limit=limit, page=page)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_get_topics_by_search: %s\n" % e)
 ```
 
@@ -386,19 +386,19 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import topics_api
-from openapi_client.model.topics_count_response import TopicsCountResponse
+import ddhub_gateway_client
+from ddhub_gateway_client.api import topics_api
+from ddhub_gateway_client.model.topics_count_response import TopicsCountResponse
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     owner = ["torta.apps.eggplant.vege.iam.ewc","mini.apps.sliced.carrot.vege.iam.ewc"] # [str] | 
@@ -407,7 +407,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.topics_controller_get_topics_count_by_owner(owner)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_get_topics_count_by_owner: %s\n" % e)
 ```
 
@@ -450,19 +450,19 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import topics_api
-from openapi_client.model.paginated_search_topic_response import PaginatedSearchTopicResponse
+import ddhub_gateway_client
+from ddhub_gateway_client.api import topics_api
+from ddhub_gateway_client.model.paginated_search_topic_response import PaginatedSearchTopicResponse
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     id = "62545547fe37f174d7715ff3" # str | id of the topic
@@ -471,7 +471,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.topics_controller_get_topics_history_by_id(id)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_get_topics_history_by_id: %s\n" % e)
 ```
 
@@ -515,20 +515,20 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import topics_api
-from openapi_client.model.post_topic_body_dto import PostTopicBodyDto
-from openapi_client.model.post_topic_dto import PostTopicDto
+import ddhub_gateway_client
+from ddhub_gateway_client.api import topics_api
+from ddhub_gateway_client.model.post_topic_body_dto import PostTopicBodyDto
+from ddhub_gateway_client.model.post_topic_dto import PostTopicDto
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     post_topic_body_dto = PostTopicBodyDto(
@@ -546,7 +546,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.topics_controller_post_topics(post_topic_body_dto)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_post_topics: %s\n" % e)
 ```
 
@@ -591,20 +591,20 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import topics_api
-from openapi_client.model.update_topic_body_dto import UpdateTopicBodyDto
-from openapi_client.model.post_topic_dto import PostTopicDto
+import ddhub_gateway_client
+from ddhub_gateway_client.api import topics_api
+from ddhub_gateway_client.model.update_topic_body_dto import UpdateTopicBodyDto
+from ddhub_gateway_client.model.post_topic_dto import PostTopicDto
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     id = "62545547fe37f174d7715ff3" # str | id of the topic
@@ -618,7 +618,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.topics_controller_update_topics(id, update_topic_body_dto)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_update_topics: %s\n" % e)
 ```
 
@@ -665,20 +665,20 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import topics_api
-from openapi_client.model.update_topic_history_body_dto import UpdateTopicHistoryBodyDto
-from openapi_client.model.post_topic_dto import PostTopicDto
+import ddhub_gateway_client
+from ddhub_gateway_client.api import topics_api
+from ddhub_gateway_client.model.update_topic_history_body_dto import UpdateTopicHistoryBodyDto
+from ddhub_gateway_client.model.post_topic_dto import PostTopicDto
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     id = "62545547fe37f174d7715ff3" # str | id of the topic
@@ -691,7 +691,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.topics_controller_update_topics_by_id_and_version(id, version_number, update_topic_history_body_dto)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_update_topics_by_id_and_version: %s\n" % e)
 ```
 

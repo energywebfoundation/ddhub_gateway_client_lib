@@ -1,4 +1,4 @@
-# openapi_client.MessagingApi
+# ddhub_gateway_client.MessagingApi
 
 All URIs are relative to *http://localhost*
 
@@ -20,20 +20,20 @@ Method | HTTP request | Description
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import messaging_api
-from openapi_client.model.send_message_dto import SendMessageDto
-from openapi_client.model.send_messagel_response_dto import SendMessagelResponseDto
+import ddhub_gateway_client
+from ddhub_gateway_client.api import messaging_api
+from ddhub_gateway_client.model.send_message_dto import SendMessageDto
+from ddhub_gateway_client.model.send_messagel_response_dto import SendMessagelResponseDto
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = messaging_api.MessagingApi(api_client)
     send_message_dto = SendMessageDto(
@@ -49,7 +49,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.message_controlller_create(send_message_dto)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling MessagingApi->message_controlller_create: %s\n" % e)
 ```
 
@@ -95,18 +95,18 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import messaging_api
+import ddhub_gateway_client
+from ddhub_gateway_client.api import messaging_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = messaging_api.MessagingApi(api_client)
     file_id = "bb2686d2-97be-436b-8869" # str | file Id for which file will be downloaded
@@ -114,7 +114,7 @@ with openapi_client.ApiClient() as api_client:
     # example passing only required values which don't have defaults set
     try:
         api_instance.message_controlller_download_message(file_id)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling MessagingApi->message_controlller_download_message: %s\n" % e)
 ```
 
@@ -159,19 +159,19 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import messaging_api
-from openapi_client.model.get_messages_response_dto import GetMessagesResponseDto
+import ddhub_gateway_client
+from ddhub_gateway_client.api import messaging_api
+from ddhub_gateway_client.model.get_messages_response_dto import GetMessagesResponseDto
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = messaging_api.MessagingApi(api_client)
     fqcn = "channel.name" # str | channel name
@@ -185,7 +185,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.message_controlller_get_message(fqcn)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling MessagingApi->message_controlller_get_message: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -193,7 +193,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.message_controlller_get_message(fqcn, _from=_from, amount=amount, topic_name=topic_name, topic_owner=topic_owner, client_id=client_id)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling MessagingApi->message_controlller_get_message: %s\n" % e)
 ```
 
@@ -244,19 +244,19 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import messaging_api
-from openapi_client.model.send_messagel_response_dto import SendMessagelResponseDto
+import ddhub_gateway_client
+from ddhub_gateway_client.api import messaging_api
+from ddhub_gateway_client.model.send_messagel_response_dto import SendMessagelResponseDto
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = messaging_api.MessagingApi(api_client)
     file = open('/path/to/file', 'rb') # file_type | File uploaded
@@ -270,7 +270,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.message_controlller_upload_file(file, fqcn, topic_name, topic_version, topic_owner)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling MessagingApi->message_controlller_upload_file: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -278,7 +278,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.message_controlller_upload_file(file, fqcn, topic_name, topic_version, topic_owner, transaction_id=transaction_id)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling MessagingApi->message_controlller_upload_file: %s\n" % e)
 ```
 

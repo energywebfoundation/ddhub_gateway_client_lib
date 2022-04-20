@@ -10,8 +10,8 @@
 
 import unittest
 
-import openapi_client
-from openapi_client.api.identity_api import IdentityApi  # noqa: E501
+import ddhub_gateway_client
+from ddhub_gateway_client.api.identity_api import IdentityApi  # noqa: E501
 
 
 class TestIdentityApi(unittest.TestCase):

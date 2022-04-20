@@ -1,4 +1,4 @@
-# openapi_client.GatewayConfigurationApi
+# ddhub_gateway_client.GatewayConfigurationApi
 
 All URIs are relative to *http://localhost*
 
@@ -18,25 +18,25 @@ Method | HTTP request | Description
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import gateway_configuration_api
+import ddhub_gateway_client
+from ddhub_gateway_client.api import gateway_configuration_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = gateway_configuration_api.GatewayConfigurationApi(api_client)
 
     # example, this endpoint has no required or optional parameters
     try:
         api_instance.certificate_controller_save()
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling GatewayConfigurationApi->certificate_controller_save: %s\n" % e)
 ```
 
@@ -76,25 +76,25 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import gateway_configuration_api
+import ddhub_gateway_client
+from ddhub_gateway_client.api import gateway_configuration_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = gateway_configuration_api.GatewayConfigurationApi(api_client)
 
     # example, this endpoint has no required or optional parameters
     try:
         api_instance.keys_controller_derive()
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling GatewayConfigurationApi->keys_controller_derive: %s\n" % e)
 ```
 

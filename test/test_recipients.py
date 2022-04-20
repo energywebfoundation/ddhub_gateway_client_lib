@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.recipients import Recipients
+import ddhub_gateway_client
+from ddhub_gateway_client.model.recipients import Recipients
 
 
 class TestRecipients(unittest.TestCase):

@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.create_identity_dto import CreateIdentityDto
+import ddhub_gateway_client
+from ddhub_gateway_client.model.create_identity_dto import CreateIdentityDto
 
 
 class TestCreateIdentityDto(unittest.TestCase):

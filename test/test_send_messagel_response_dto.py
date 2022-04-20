@@ -11,12 +11,12 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.recipients import Recipients
-from openapi_client.model.status import Status
+import ddhub_gateway_client
+from ddhub_gateway_client.model.recipients import Recipients
+from ddhub_gateway_client.model.status import Status
 globals()['Recipients'] = Recipients
 globals()['Status'] = Status
-from openapi_client.model.send_messagel_response_dto import SendMessagelResponseDto
+from ddhub_gateway_client.model.send_messagel_response_dto import SendMessagelResponseDto
 
 
 class TestSendMessagelResponseDto(unittest.TestCase):

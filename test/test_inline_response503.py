@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.inline_response503 import InlineResponse503
+import ddhub_gateway_client
+from ddhub_gateway_client.model.inline_response503 import InlineResponse503
 
 
 class TestInlineResponse503(unittest.TestCase):

@@ -11,10 +11,10 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.channel_conditions_dto import ChannelConditionsDto
+import ddhub_gateway_client
+from ddhub_gateway_client.model.channel_conditions_dto import ChannelConditionsDto
 globals()['ChannelConditionsDto'] = ChannelConditionsDto
-from openapi_client.model.create_channel_dto import CreateChannelDto
+from ddhub_gateway_client.model.create_channel_dto import CreateChannelDto
 
 
 class TestCreateChannelDto(unittest.TestCase):

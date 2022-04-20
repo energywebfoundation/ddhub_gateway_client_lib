@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.get_messages_response_dto import GetMessagesResponseDto
+import ddhub_gateway_client
+from ddhub_gateway_client.model.get_messages_response_dto import GetMessagesResponseDto
 
 
 class TestGetMessagesResponseDto(unittest.TestCase):

@@ -11,10 +11,10 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.details import Details
+import ddhub_gateway_client
+from ddhub_gateway_client.model.details import Details
 globals()['Details'] = Details
-from openapi_client.model.status import Status
+from ddhub_gateway_client.model.status import Status
 
 
 class TestStatus(unittest.TestCase):

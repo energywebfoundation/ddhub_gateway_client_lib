@@ -11,10 +11,10 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.role_dto import RoleDto
+import ddhub_gateway_client
+from ddhub_gateway_client.model.role_dto import RoleDto
 globals()['RoleDto'] = RoleDto
-from openapi_client.model.enrolment_dto import EnrolmentDto
+from ddhub_gateway_client.model.enrolment_dto import EnrolmentDto
 
 
 class TestEnrolmentDto(unittest.TestCase):

@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.topic_dto import TopicDto
+import ddhub_gateway_client
+from ddhub_gateway_client.model.topic_dto import TopicDto
 
 
 class TestTopicDto(unittest.TestCase):

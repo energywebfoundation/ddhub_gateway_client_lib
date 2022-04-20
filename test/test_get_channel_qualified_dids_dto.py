@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.get_channel_qualified_dids_dto import GetChannelQualifiedDidsDto
+import ddhub_gateway_client
+from ddhub_gateway_client.model.get_channel_qualified_dids_dto import GetChannelQualifiedDidsDto
 
 
 class TestGetChannelQualifiedDidsDto(unittest.TestCase):

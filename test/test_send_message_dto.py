@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.send_message_dto import SendMessageDto
+import ddhub_gateway_client
+from ddhub_gateway_client.model.send_message_dto import SendMessageDto
 
 
 class TestSendMessageDto(unittest.TestCase):

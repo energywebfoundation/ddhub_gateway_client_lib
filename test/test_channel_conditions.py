@@ -11,10 +11,10 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.channel_topic import ChannelTopic
+import ddhub_gateway_client
+from ddhub_gateway_client.model.channel_topic import ChannelTopic
 globals()['ChannelTopic'] = ChannelTopic
-from openapi_client.model.channel_conditions import ChannelConditions
+from ddhub_gateway_client.model.channel_conditions import ChannelConditions
 
 
 class TestChannelConditions(unittest.TestCase):

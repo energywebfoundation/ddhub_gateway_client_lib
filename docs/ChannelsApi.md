@@ -1,4 +1,4 @@
-# openapi_client.ChannelsApi
+# ddhub_gateway_client.ChannelsApi
 
 All URIs are relative to *http://localhost*
 
@@ -23,19 +23,19 @@ Method | HTTP request | Description
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import channels_api
-from openapi_client.model.create_channel_dto import CreateChannelDto
+import ddhub_gateway_client
+from ddhub_gateway_client.api import channels_api
+from ddhub_gateway_client.model.create_channel_dto import CreateChannelDto
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = channels_api.ChannelsApi(api_client)
     create_channel_dto = CreateChannelDto(
@@ -48,7 +48,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.channel_controller_create(create_channel_dto)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling ChannelsApi->channel_controller_create: %s\n" % e)
 ```
 
@@ -93,18 +93,18 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import channels_api
+import ddhub_gateway_client
+from ddhub_gateway_client.api import channels_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = channels_api.ChannelsApi(api_client)
     fqcn = "channel.name" # str | Channel type
@@ -112,7 +112,7 @@ with openapi_client.ApiClient() as api_client:
     # example passing only required values which don't have defaults set
     try:
         api_instance.channel_controller_delete(fqcn)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling ChannelsApi->channel_controller_delete: %s\n" % e)
 ```
 
@@ -157,19 +157,19 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import channels_api
-from openapi_client.model.get_channel_response_dto import GetChannelResponseDto
+import ddhub_gateway_client
+from ddhub_gateway_client.api import channels_api
+from ddhub_gateway_client.model.get_channel_response_dto import GetChannelResponseDto
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = channels_api.ChannelsApi(api_client)
     fqcn = "channel.name" # str | Channel type
@@ -178,7 +178,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.channel_controller_get(fqcn)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling ChannelsApi->channel_controller_get: %s\n" % e)
 ```
 
@@ -223,19 +223,19 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import channels_api
-from openapi_client.model.get_channel_response_dto import GetChannelResponseDto
+import ddhub_gateway_client
+from ddhub_gateway_client.api import channels_api
+from ddhub_gateway_client.model.get_channel_response_dto import GetChannelResponseDto
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = channels_api.ChannelsApi(api_client)
     type = "sub" # str | Channel type
@@ -244,7 +244,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.channel_controller_get_by_type(type)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling ChannelsApi->channel_controller_get_by_type: %s\n" % e)
 ```
 
@@ -288,19 +288,19 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import channels_api
-from openapi_client.model.get_channel_qualified_dids_dto import GetChannelQualifiedDidsDto
+import ddhub_gateway_client
+from ddhub_gateway_client.api import channels_api
+from ddhub_gateway_client.model.get_channel_qualified_dids_dto import GetChannelQualifiedDidsDto
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = channels_api.ChannelsApi(api_client)
     fqcn = "channel.name" # str | Channel type
@@ -309,7 +309,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.channel_controller_get_qualified_dids(fqcn)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling ChannelsApi->channel_controller_get_qualified_dids: %s\n" % e)
 ```
 
@@ -354,25 +354,25 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import channels_api
+import ddhub_gateway_client
+from ddhub_gateway_client.api import channels_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = channels_api.ChannelsApi(api_client)
 
     # example, this endpoint has no required or optional parameters
     try:
         api_instance.channel_controller_refresh_did()
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling ChannelsApi->channel_controller_refresh_did: %s\n" % e)
 ```
 
@@ -412,19 +412,19 @@ No authorization required
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import channels_api
-from openapi_client.model.update_channel_dto import UpdateChannelDto
+import ddhub_gateway_client
+from ddhub_gateway_client.api import channels_api
+from ddhub_gateway_client.model.update_channel_dto import UpdateChannelDto
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = channels_api.ChannelsApi(api_client)
     fqcn = "channel.name" # str | Channel type
@@ -437,7 +437,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.channel_controller_update(fqcn, update_channel_dto)
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling ChannelsApi->channel_controller_update: %s\n" % e)
 ```
 

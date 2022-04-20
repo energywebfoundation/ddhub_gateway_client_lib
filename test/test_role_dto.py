@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.role_dto import RoleDto
+import ddhub_gateway_client
+from ddhub_gateway_client.model.role_dto import RoleDto
 
 
 class TestRoleDto(unittest.TestCase):

@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.channel_topic import ChannelTopic
+import ddhub_gateway_client
+from ddhub_gateway_client.model.channel_topic import ChannelTopic
 
 
 class TestChannelTopic(unittest.TestCase):

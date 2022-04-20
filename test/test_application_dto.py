@@ -11,8 +11,8 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.application_dto import ApplicationDTO
+import ddhub_gateway_client
+from ddhub_gateway_client.model.application_dto import ApplicationDTO
 
 
 class TestApplicationDTO(unittest.TestCase):

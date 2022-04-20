@@ -1,4 +1,4 @@
-# openapi_client.HealthApi
+# ddhub_gateway_client.HealthApi
 
 All URIs are relative to *http://localhost*
 
@@ -17,20 +17,20 @@ Method | HTTP request | Description
 
 ```python
 import time
-import openapi_client
-from openapi_client.api import health_api
-from openapi_client.model.inline_response200 import InlineResponse200
-from openapi_client.model.inline_response503 import InlineResponse503
+import ddhub_gateway_client
+from ddhub_gateway_client.api import health_api
+from ddhub_gateway_client.model.inline_response503 import InlineResponse503
+from ddhub_gateway_client.model.inline_response200 import InlineResponse200
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = ddhub_gateway_client.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = health_api.HealthApi(api_client)
 
@@ -38,7 +38,7 @@ with openapi_client.ApiClient() as api_client:
     try:
         api_response = api_instance.health_controller_check()
         pprint(api_response)
-    except openapi_client.ApiException as e:
+    except ddhub_gateway_client.ApiException as e:
         print("Exception when calling HealthApi->health_controller_check: %s\n" % e)
 ```
 

@@ -10,8 +10,8 @@
 
 import unittest
 
-import openapi_client
-from openapi_client.api.messaging_api import MessagingApi  # noqa: E501
+import ddhub_gateway_client
+from ddhub_gateway_client.api.messaging_api import MessagingApi  # noqa: E501
 
 
 class TestMessagingApi(unittest.TestCase):

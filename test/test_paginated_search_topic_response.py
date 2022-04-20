@@ -11,10 +11,10 @@
 import sys
 import unittest
 
-import openapi_client
-from openapi_client.model.get_topic_search_dto import GetTopicSearchDto
+import ddhub_gateway_client
+from ddhub_gateway_client.model.get_topic_search_dto import GetTopicSearchDto
 globals()['GetTopicSearchDto'] = GetTopicSearchDto
-from openapi_client.model.paginated_search_topic_response import PaginatedSearchTopicResponse
+from ddhub_gateway_client.model.paginated_search_topic_response import PaginatedSearchTopicResponse
 
 
 class TestPaginatedSearchTopicResponse(unittest.TestCase):
