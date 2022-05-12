@@ -1,8 +1,7 @@
 import time
 import ddhub_gateway_client
-from ddhub_gateway_client.api import health_api
-from ddhub_gateway_client.model.inline_response503 import InlineResponse503
-from ddhub_gateway_client.model.inline_response200 import InlineResponse200
+from ddhub_gateway_client.api import channels_api
+from ddhub_gateway_client.model.get_channel_response_dto import GetChannelResponseDto
 from pprint import pprint
 import os
 from py_dotenv import read_dotenv
@@ -23,10 +22,12 @@ configuration = ddhub_gateway_client.Configuration(
 # Enter a context with an instance of the API client
 with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = health_api.HealthApi(api_client)
+    api_instance = channels_api.ChannelsApi(api_client)
+    type = "sub" # str | Channel type
 
+    # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.health_controller_check()
+        api_response = api_instance.channel_controller_get_by_type(type)
         pprint(api_response)
     except ddhub_gateway_client.ApiException as e:
-        print("Exception when calling HealthApi->health_controller_check: %s\n" % e)
+        print("Exception when calling ChannelsApi->channel_controller_get_by_type: %s\n" % e)

@@ -33,7 +33,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = messaging_api.MessagingApi(api_client)
     send_message_dto = SendMessageDto(
@@ -106,7 +106,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = messaging_api.MessagingApi(api_client)
     file_id = "bb2686d2-97be-436b-8869" # str | file Id for which file will be downloaded
@@ -171,7 +171,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = messaging_api.MessagingApi(api_client)
     fqcn = "channel.name" # str | channel name
@@ -256,7 +256,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = messaging_api.MessagingApi(api_client)
     file = open('/path/to/file', 'rb') # file_type | File uploaded

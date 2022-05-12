@@ -38,7 +38,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     id = "62545547fe37f174d7715ff3" # str | id of the topic
@@ -105,7 +105,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     id = "62545547fe37f174d7715ff3" # str | id of the topic
@@ -174,7 +174,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     id = "62545547fe37f174d7715ff3" # str | id of the topic
@@ -241,7 +241,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     owner = "ddhub.apps.energyweb.iam.ewc" # str | 
@@ -322,7 +322,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     keyword = "Topic_JSON_V12" # str | 
@@ -398,7 +398,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     owner = ["torta.apps.eggplant.vege.iam.ewc","mini.apps.sliced.carrot.vege.iam.ewc"] # [str] | 
@@ -462,7 +462,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     id = "62545547fe37f174d7715ff3" # str | id of the topic
@@ -528,7 +528,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     post_topic_body_dto = PostTopicBodyDto(
@@ -604,7 +604,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     id = "62545547fe37f174d7715ff3" # str | id of the topic
@@ -678,7 +678,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     id = "62545547fe37f174d7715ff3" # str | id of the topic

@@ -29,7 +29,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = gateway_configuration_api.GatewayConfigurationApi(api_client)
 
@@ -87,7 +87,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = gateway_configuration_api.GatewayConfigurationApi(api_client)
 

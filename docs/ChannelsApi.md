@@ -35,7 +35,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = channels_api.ChannelsApi(api_client)
     create_channel_dto = CreateChannelDto(
@@ -104,7 +104,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = channels_api.ChannelsApi(api_client)
     fqcn = "channel.name" # str | Channel type
@@ -169,7 +169,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = channels_api.ChannelsApi(api_client)
     fqcn = "channel.name" # str | Channel type
@@ -235,7 +235,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = channels_api.ChannelsApi(api_client)
     type = "sub" # str | Channel type
@@ -300,7 +300,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = channels_api.ChannelsApi(api_client)
     fqcn = "channel.name" # str | Channel type
@@ -365,7 +365,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = channels_api.ChannelsApi(api_client)
 
@@ -424,7 +424,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient() as api_client:
+with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = channels_api.ChannelsApi(api_client)
     fqcn = "channel.name" # str | Channel type
