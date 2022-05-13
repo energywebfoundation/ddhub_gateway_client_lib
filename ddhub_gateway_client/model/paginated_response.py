@@ -87,7 +87,7 @@ class PaginatedResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'total': (float,),  # noqa: E501
+            'count': (float,),  # noqa: E501
             'limit': (float,),  # noqa: E501
             'page': (float,),  # noqa: E501
             'records': ([GetTopicDto],),  # noqa: E501
@@ -99,7 +99,7 @@ class PaginatedResponse(ModelNormal):
 
 
     attribute_map = {
-        'total': 'total',  # noqa: E501
+        'count': 'count',  # noqa: E501
         'limit': 'limit',  # noqa: E501
         'page': 'page',  # noqa: E501
         'records': 'records',  # noqa: E501
@@ -112,11 +112,11 @@ class PaginatedResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, total, limit, page, records, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, count, limit, page, records, *args, **kwargs):  # noqa: E501
         """PaginatedResponse - a model defined in OpenAPI
 
         Args:
-            total (float): total number of channels
+            count (float): total number of channels
             limit (float): limit of channels
             page (float): page number out of total pages
             records ([GetTopicDto]): Topics records
@@ -179,7 +179,7 @@ class PaginatedResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.total = total
+        self.count = count
         self.limit = limit
         self.page = page
         self.records = records
@@ -203,11 +203,11 @@ class PaginatedResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, total, limit, page, records, *args, **kwargs):  # noqa: E501
+    def __init__(self, count, limit, page, records, *args, **kwargs):  # noqa: E501
         """PaginatedResponse - a model defined in OpenAPI
 
         Args:
-            total (float): total number of channels
+            count (float): total number of channels
             limit (float): limit of channels
             page (float): page number out of total pages
             records ([GetTopicDto]): Topics records
@@ -268,7 +268,7 @@ class PaginatedResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.total = total
+        self.count = count
         self.limit = limit
         self.page = page
         self.records = records

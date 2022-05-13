@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**total** | **float** | total number of channels | 
+**count** | **float** | total number of channels | 
 **limit** | **float** | limit of channels | 
 **page** | **float** | page number out of total pages | 
 **records** | [**[GetTopicDto]**](GetTopicDto.md) | Topics records | 
