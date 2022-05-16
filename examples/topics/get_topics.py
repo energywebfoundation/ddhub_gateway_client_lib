@@ -24,10 +24,10 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     owner = "ddhub.apps.energyweb.iam.ewc" # str | 
-    limit = 1 # float |  (optional) if omitted the server will use the default value of 0
-    name = "topic name" # str |  (optional) if omitted the server will use the default value of ""
+    limit = 0 # float |  (optional) if omitted the server will use the default value of 0
+    name = "" # str |  (optional) if omitted the server will use the default value of ""
     page = 1 # float |  (optional) if omitted the server will use the default value of 1
-    tags = ["aggregator"] # [str] |  (optional) if omitted the server will use the default value of []
+    tags = [] # [str] |  (optional) if omitted the server will use the default value of []
 
     # example passing only required values which don't have defaults set
     try:
@@ -38,8 +38,9 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     # and optional values
+    time.sleep(5)
     try:
-        api_response = api_instance.topics_controller_get_topics(owner, limit=limit, name=name, page=page, tags=tags)
+        api_response = api_instance.topics_controller_get_topics(owner, page=page)
         pprint(api_response)
     except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_get_topics: %s\n" % e)

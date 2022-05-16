@@ -192,7 +192,7 @@ class PostTopicDto(ModelNormal):
         self.id = id
         self.name = name
         self.schema_type = schema_type
-        self.schema = schema
+        self.schema = str(schema)
         self.version = version
         self.owner = owner
         self.tags = tags
@@ -287,7 +287,7 @@ class PostTopicDto(ModelNormal):
         self.id = id
         self.name = name
         self.schema_type = schema_type
-        self.schema = schema
+        self.schema = str(schema)
         self.version = version
         self.owner = owner
         self.tags = tags
