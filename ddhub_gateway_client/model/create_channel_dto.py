@@ -94,6 +94,7 @@ class CreateChannelDto(ModelNormal):
         lazy_import()
         return {
             'fqcn': (str,),  # noqa: E501
+            'payload_encryption': (bool,),  # noqa: E501
             'type': (str,),  # noqa: E501
             'conditions': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
         }
@@ -105,6 +106,7 @@ class CreateChannelDto(ModelNormal):
 
     attribute_map = {
         'fqcn': 'fqcn',  # noqa: E501
+        'payload_encryption': 'payloadEncryption',  # noqa: E501
         'type': 'type',  # noqa: E501
         'conditions': 'conditions',  # noqa: E501
     }
@@ -116,11 +118,12 @@ class CreateChannelDto(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, fqcn, type, conditions, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, fqcn, payload_encryption, type, conditions, *args, **kwargs):  # noqa: E501
         """CreateChannelDto - a model defined in OpenAPI
 
         Args:
             fqcn (str): Channel type
+            payload_encryption (bool): Channel encryption
             type (str): Channel type
             conditions (bool, date, datetime, dict, float, int, list, str, none_type): Channel conditions
 
@@ -183,6 +186,7 @@ class CreateChannelDto(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.fqcn = fqcn
+        self.payload_encryption = payload_encryption
         self.type = type
         self.conditions = conditions
         for var_name, var_value in kwargs.items():
@@ -205,11 +209,12 @@ class CreateChannelDto(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, fqcn, type, conditions, *args, **kwargs):  # noqa: E501
+    def __init__(self, fqcn, payload_encryption, type, conditions, *args, **kwargs):  # noqa: E501
         """CreateChannelDto - a model defined in OpenAPI
 
         Args:
             fqcn (str): Channel type
+            payload_encryption (bool): Channel encryption
             type (str): Channel type
             conditions (bool, date, datetime, dict, float, int, list, str, none_type): Channel conditions
 
@@ -270,6 +275,7 @@ class CreateChannelDto(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.fqcn = fqcn
+        self.payload_encryption = payload_encryption
         self.type = type
         self.conditions = conditions
         for var_name, var_value in kwargs.items():

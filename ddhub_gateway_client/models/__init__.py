@@ -15,6 +15,7 @@ from ddhub_gateway_client.model.channel_conditions_dto import ChannelConditionsD
 from ddhub_gateway_client.model.channel_topic import ChannelTopic
 from ddhub_gateway_client.model.create_channel_dto import CreateChannelDto
 from ddhub_gateway_client.model.create_identity_dto import CreateIdentityDto
+from ddhub_gateway_client.model.cron_response_dto import CronResponseDto
 from ddhub_gateway_client.model.delete_topic import DeleteTopic
 from ddhub_gateway_client.model.details import Details
 from ddhub_gateway_client.model.enrolment_dto import EnrolmentDto

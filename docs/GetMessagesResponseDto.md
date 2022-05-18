@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **topic_name** | **str** | topic Name | 
 **topic_owner** | **str** | application namespace | 
 **topic_version** | **str** | Topic Version | 
+**topic_schema_type** | **str** | schema type of the topic | 
 **payload** | **str** | Payload sent to message | 
 **signature** | **str** | signature sent to message | 
 **sender** | **str** | signature sent to message | 

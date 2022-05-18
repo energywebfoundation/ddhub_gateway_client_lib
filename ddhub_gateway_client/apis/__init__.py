@@ -22,3 +22,4 @@ from ddhub_gateway_client.api.health_api import HealthApi
 from ddhub_gateway_client.api.identity_api import IdentityApi
 from ddhub_gateway_client.api.messaging_api import MessagingApi
 from ddhub_gateway_client.api.topics_api import TopicsApi
+from ddhub_gateway_client.api.default_api import DefaultApi

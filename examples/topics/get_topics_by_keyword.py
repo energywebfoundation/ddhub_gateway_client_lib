@@ -1,10 +1,17 @@
 import time
 import ddhub_gateway_client
 from ddhub_gateway_client.api import topics_api
-from ddhub_gateway_client.model.paginated_response import PaginatedResponse
+from ddhub_gateway_client.model.paginated_search_topic_response import PaginatedSearchTopicResponse
 from pprint import pprint
 import os
 from py_dotenv import read_dotenv
+
+#TODO check error 500 when optional are passed
+
+#these variables need to be set
+SEARCH_KEYWORD = "Topic_JSON_V12" # str | 
+SEARCH_LIMIT = 1 # float |  (optional) if omitted the server will use the default value of 0
+SEARCH_PAGE = 1 # float |  (optional) if omitted the server will use the default value of 1
 
 # Read dotenv
 dotenv_path = os.path.join(os.path.abspath('./examples/'), '.env')
@@ -23,24 +30,18 @@ configuration = ddhub_gateway_client.Configuration(
 with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
-    owner = "ddhub.apps.energyweb.iam.ewc" # str | 
-    limit = 0 # int |  (optional) if omitted the server will use the default value of 0
-    name = "" # str |  (optional) if omitted the server will use the default value of ""
-    page = 1 # int |  (optional) if omitted the server will use the default value of 1
-    tags = [] # [str] |  (optional) if omitted the server will use the default value of []
 
     # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.topics_controller_get_topics(owner)
+        api_response = api_instance.topics_controller_get_topics_by_search(SEARCH_KEYWORD)
         pprint(api_response)
     except ddhub_gateway_client.ApiException as e:
-        print("Exception when calling TopicsApi->topics_controller_get_topics: %s\n" % e)
+        print("Exception when calling TopicsApi->topics_controller_get_topics_by_search: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
-    time.sleep(5)
     try:
-        api_response = api_instance.topics_controller_get_topics(owner, page=page)
+        api_response = api_instance.topics_controller_get_topics_by_search(SEARCH_KEYWORD, limit=SEARCH_LIMIT, page=SEARCH_LIMIT)
         pprint(api_response)
     except ddhub_gateway_client.ApiException as e:
-        print("Exception when calling TopicsApi->topics_controller_get_topics: %s\n" % e)
+        print("Exception when calling TopicsApi->topics_controller_get_topics_by_search: %s\n" % e)

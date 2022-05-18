@@ -87,9 +87,9 @@ class PaginatedSearchTopicResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'count': (float,),  # noqa: E501
-            'limit': (float,),  # noqa: E501
-            'page': (float,),  # noqa: E501
+            'count': (int,),  # noqa: E501
+            'limit': (int,),  # noqa: E501
+            'page': (int,),  # noqa: E501
             'records': ([GetTopicSearchDto],),  # noqa: E501
         }
 

@@ -40,6 +40,7 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
     api_instance = channels_api.ChannelsApi(api_client)
     create_channel_dto = CreateChannelDto(
         fqcn="channel.name",
+        payload_encryption=True,
         type="sub",
         conditions=None,
     ) # CreateChannelDto | 
@@ -430,6 +431,7 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
     fqcn = "channel.name" # str | Channel type
     update_channel_dto = UpdateChannelDto(
         type="sub",
+        payload_encryption=True,
         conditions=None,
     ) # UpdateChannelDto | 
 

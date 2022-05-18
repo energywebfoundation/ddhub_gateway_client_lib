@@ -89,6 +89,7 @@ class ChannelConditions(ModelNormal):
         return {
             'dids': ([str],),  # noqa: E501
             'roles': ([str],),  # noqa: E501
+            'qualified_dids': ([str],),  # noqa: E501
             'topics': ([ChannelTopic],),  # noqa: E501
         }
 
@@ -100,6 +101,7 @@ class ChannelConditions(ModelNormal):
     attribute_map = {
         'dids': 'dids',  # noqa: E501
         'roles': 'roles',  # noqa: E501
+        'qualified_dids': 'qualifiedDids',  # noqa: E501
         'topics': 'topics',  # noqa: E501
     }
 
@@ -110,12 +112,13 @@ class ChannelConditions(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, dids, roles, topics, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, dids, roles, qualified_dids, topics, *args, **kwargs):  # noqa: E501
         """ChannelConditions - a model defined in OpenAPI
 
         Args:
             dids ([str]): Array of DIDS
             roles ([str]): Array of roles
+            qualified_dids ([str]): List of qualified dids
             topics ([ChannelTopic]): Array of topics
 
         Keyword Args:
@@ -178,6 +181,7 @@ class ChannelConditions(ModelNormal):
 
         self.dids = dids
         self.roles = roles
+        self.qualified_dids = qualified_dids
         self.topics = topics
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -199,12 +203,13 @@ class ChannelConditions(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, dids, roles, topics, *args, **kwargs):  # noqa: E501
+    def __init__(self, dids, roles, qualified_dids, topics, *args, **kwargs):  # noqa: E501
         """ChannelConditions - a model defined in OpenAPI
 
         Args:
             dids ([str]): Array of DIDS
             roles ([str]): Array of roles
+            qualified_dids ([str]): List of qualified dids
             topics ([ChannelTopic]): Array of topics
 
         Keyword Args:
@@ -265,6 +270,7 @@ class ChannelConditions(ModelNormal):
 
         self.dids = dids
         self.roles = roles
+        self.qualified_dids = qualified_dids
         self.topics = topics
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
