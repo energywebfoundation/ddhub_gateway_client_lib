@@ -10,11 +10,15 @@ from py_dotenv import read_dotenv
 
 #these variables need to be set
 
-TOPIC_NAME = "name"
-TOPIC_OWNER = "owner"
 FQCN = "aresguerre.fqcn"
 CHANNEL_TYPE = "sub"
+PAYLOAD_ENCRYPTION = True
 
+CHANNEL_CONDITION_DIDS = ["did:ethr:volta:0x552761011ea5b332605Bc1Cc2020A4a4f8C738CD",]
+CHANNEL_CONDITION_ROLES = ["channelcreation.roles.dsb.apps.energyweb.iam.ewc",]
+
+TOPIC_NAME = "Topic_JSON_VV51"
+TOPIC_OWNER = "mini.apps.sliced.carrot.vege.iam.ewc"
 # Read dotenv
 dotenv_path = os.path.join(os.path.abspath('./examples/'), '.env')
 read_dotenv(dotenv_path)
@@ -37,10 +41,13 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
         owner=TOPIC_OWNER,
     )
     channel_condition_dto = ChannelConditionsDto(
+        dids=CHANNEL_CONDITION_DIDS,
         topics=[topic_dto],
+        roles=CHANNEL_CONDITION_ROLES,
     )
     create_channel_dto = CreateChannelDto(
         fqcn=FQCN,
+        payload_encryption=PAYLOAD_ENCRYPTION,
         type=CHANNEL_TYPE,
         conditions=channel_condition_dto,
     ) # CreateChannelDto | 
