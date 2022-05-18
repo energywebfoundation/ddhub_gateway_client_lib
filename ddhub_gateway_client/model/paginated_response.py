@@ -207,9 +207,9 @@ class PaginatedResponse(ModelNormal):
         """PaginatedResponse - a model defined in OpenAPI
 
         Args:
-            count (float): total number of channels
-            limit (float): limit of channels
-            page (float): page number out of total pages
+            count (int): total number of channels
+            limit (int): limit of channels
+            page (int): page number out of total pages
             records ([GetTopicDto]): Topics records
 
         Keyword Args:
