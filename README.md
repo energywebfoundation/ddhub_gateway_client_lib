@@ -108,6 +108,7 @@ Class | Method | HTTP request | Description
 *TopicsApi* | [**topics_controller_post_topics**](docs/TopicsApi.md#topics_controller_post_topics) | **POST** /api/v2/topics | 
 *TopicsApi* | [**topics_controller_update_topics**](docs/TopicsApi.md#topics_controller_update_topics) | **PUT** /api/v2/topics/{id} | 
 *TopicsApi* | [**topics_controller_update_topics_by_id_and_version**](docs/TopicsApi.md#topics_controller_update_topics_by_id_and_version) | **PUT** /api/v2/topics/{id}/versions/{versionNumber} | 
+*DefaultApi* | [**cron_controller_get_jobs_results**](docs/DefaultApi.md#cron_controller_get_jobs_results) | **GET** /api/v2/cron | 
 
 
 ## Documentation For Models
@@ -118,6 +119,7 @@ Class | Method | HTTP request | Description
  - [ChannelTopic](docs/ChannelTopic.md)
  - [CreateChannelDto](docs/CreateChannelDto.md)
  - [CreateIdentityDto](docs/CreateIdentityDto.md)
+ - [CronResponseDto](docs/CronResponseDto.md)
  - [DeleteTopic](docs/DeleteTopic.md)
  - [Details](docs/Details.md)
  - [EnrolmentDto](docs/EnrolmentDto.md)

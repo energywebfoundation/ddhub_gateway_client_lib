@@ -237,11 +237,11 @@ class TopicsApi(object):
                     'owner':
                         (str,),
                     'limit':
-                        (float,),
+                        (int,),
                     'name':
                         (str,),
                     'page':
-                        (float,),
+                        (int,),
                     'tags':
                         ([str],),
                 },
@@ -305,9 +305,9 @@ class TopicsApi(object):
                     'keyword':
                         (str,),
                     'limit':
-                        (float,),
+                        (int,),
                     'page':
-                        (float,),
+                        (int,),
                 },
                 'attribute_map': {
                     'keyword': 'keyword',
@@ -854,9 +854,9 @@ class TopicsApi(object):
             owner (str):
 
         Keyword Args:
-            limit (float): [optional] if omitted the server will use the default value of 0
+            limit (int): [optional] if omitted the server will use the default value of 0
             name (str): [optional] if omitted the server will use the default value of ""
-            page (float): [optional] if omitted the server will use the default value of 1
+            page (int): [optional] if omitted the server will use the default value of 1
             tags ([str]): [optional] if omitted the server will use the default value of []
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -935,8 +935,8 @@ class TopicsApi(object):
             keyword (str):
 
         Keyword Args:
-            limit (float): [optional] if omitted the server will use the default value of 0
-            page (float): [optional] if omitted the server will use the default value of 1
+            limit (int): [optional] if omitted the server will use the default value of 0
+            page (int): [optional] if omitted the server will use the default value of 1
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

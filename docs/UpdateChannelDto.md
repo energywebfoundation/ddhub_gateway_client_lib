@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Channel type | 
+**payload_encryption** | **bool** | Channel encryption | 
 **conditions** | **bool, date, datetime, dict, float, int, list, str, none_type** | Channel conditions | 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 

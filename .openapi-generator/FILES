@@ -7,6 +7,7 @@ ddhub_gateway_client/__init__.py
 ddhub_gateway_client/api/__init__.py
 ddhub_gateway_client/api/applications_api.py
 ddhub_gateway_client/api/channels_api.py
+ddhub_gateway_client/api/default_api.py
 ddhub_gateway_client/api/enrolment_api.py
 ddhub_gateway_client/api/gateway_configuration_api.py
 ddhub_gateway_client/api/health_api.py
@@ -24,6 +25,7 @@ ddhub_gateway_client/model/channel_conditions_dto.py
 ddhub_gateway_client/model/channel_topic.py
 ddhub_gateway_client/model/create_channel_dto.py
 ddhub_gateway_client/model/create_identity_dto.py
+ddhub_gateway_client/model/cron_response_dto.py
 ddhub_gateway_client/model/delete_topic.py
 ddhub_gateway_client/model/details.py
 ddhub_gateway_client/model/enrolment_dto.py
@@ -60,6 +62,8 @@ docs/ChannelTopic.md
 docs/ChannelsApi.md
 docs/CreateChannelDto.md
 docs/CreateIdentityDto.md
+docs/CronResponseDto.md
+docs/DefaultApi.md
 docs/DeleteTopic.md
 docs/Details.md
 docs/EnrolmentApi.md
@@ -105,6 +109,8 @@ test/test_channel_topic.py
 test/test_channels_api.py
 test/test_create_channel_dto.py
 test/test_create_identity_dto.py
+test/test_cron_response_dto.py
+test/test_default_api.py
 test/test_delete_topic.py
 test/test_details.py
 test/test_enrolment_api.py

@@ -55,6 +55,13 @@ class GetMessagesResponseDto(ModelNormal):
     """
 
     allowed_values = {
+        ('topic_schema_type',): {
+            'JSD7': "JSD7",
+            'XML': "XML",
+            'XSD6': "XSD6",
+            'CSV': "CSV",
+            'TSV': "TSV",
+        },
     }
 
     validations = {
@@ -85,6 +92,7 @@ class GetMessagesResponseDto(ModelNormal):
             'topic_name': (str,),  # noqa: E501
             'topic_owner': (str,),  # noqa: E501
             'topic_version': (str,),  # noqa: E501
+            'topic_schema_type': (str,),  # noqa: E501
             'payload': (str,),  # noqa: E501
             'signature': (str,),  # noqa: E501
             'sender': (str,),  # noqa: E501
@@ -103,6 +111,7 @@ class GetMessagesResponseDto(ModelNormal):
         'topic_name': 'topicName',  # noqa: E501
         'topic_owner': 'topicOwner',  # noqa: E501
         'topic_version': 'topicVersion',  # noqa: E501
+        'topic_schema_type': 'topicSchemaType',  # noqa: E501
         'payload': 'payload',  # noqa: E501
         'signature': 'signature',  # noqa: E501
         'sender': 'sender',  # noqa: E501
@@ -118,7 +127,7 @@ class GetMessagesResponseDto(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, topic_name, topic_owner, topic_version, payload, signature, sender, timestamp_nanos, transaction_id, signature_valid, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, topic_name, topic_owner, topic_version, topic_schema_type, payload, signature, sender, timestamp_nanos, transaction_id, signature_valid, *args, **kwargs):  # noqa: E501
         """GetMessagesResponseDto - a model defined in OpenAPI
 
         Args:
@@ -126,6 +135,7 @@ class GetMessagesResponseDto(ModelNormal):
             topic_name (str): topic Name
             topic_owner (str): application namespace
             topic_version (str): Topic Version
+            topic_schema_type (str): schema type of the topic
             payload (str): Payload sent to message
             signature (str): signature sent to message
             sender (str): signature sent to message
@@ -195,6 +205,7 @@ class GetMessagesResponseDto(ModelNormal):
         self.topic_name = topic_name
         self.topic_owner = topic_owner
         self.topic_version = topic_version
+        self.topic_schema_type = topic_schema_type
         self.payload = payload
         self.signature = signature
         self.sender = sender
@@ -221,7 +232,7 @@ class GetMessagesResponseDto(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, topic_name, topic_owner, topic_version, payload, signature, sender, timestamp_nanos, transaction_id, signature_valid, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, topic_name, topic_owner, topic_version, topic_schema_type, payload, signature, sender, timestamp_nanos, transaction_id, signature_valid, *args, **kwargs):  # noqa: E501
         """GetMessagesResponseDto - a model defined in OpenAPI
 
         Args:
@@ -229,6 +240,7 @@ class GetMessagesResponseDto(ModelNormal):
             topic_name (str): topic Name
             topic_owner (str): application namespace
             topic_version (str): Topic Version
+            topic_schema_type (str): schema type of the topic
             payload (str): Payload sent to message
             signature (str): signature sent to message
             sender (str): signature sent to message
@@ -296,6 +308,7 @@ class GetMessagesResponseDto(ModelNormal):
         self.topic_name = topic_name
         self.topic_owner = topic_owner
         self.topic_version = topic_version
+        self.topic_schema_type = topic_schema_type
         self.payload = payload
         self.signature = signature
         self.sender = sender

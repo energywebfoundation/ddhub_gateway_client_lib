@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**count** | **float** | total number of channels | 
-**limit** | **float** | limit of channels | 
-**page** | **float** | page number out of total pages | 
+**count** | **int** | total number of channels | 
+**limit** | **int** | limit of channels | 
+**page** | **int** | page number out of total pages | 
 **records** | [**[GetTopicSearchDto]**](GetTopicSearchDto.md) | Topics records | 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 

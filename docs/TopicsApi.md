@@ -245,9 +245,9 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     owner = "ddhub.apps.energyweb.iam.ewc" # str | 
-    limit = 1 # float |  (optional) if omitted the server will use the default value of 0
+    limit = 1 # int |  (optional) if omitted the server will use the default value of 0
     name = "topic name" # str |  (optional) if omitted the server will use the default value of ""
-    page = 1 # float |  (optional) if omitted the server will use the default value of 1
+    page = 1 # int |  (optional) if omitted the server will use the default value of 1
     tags = ["aggregator"] # [str] |  (optional) if omitted the server will use the default value of []
 
     # example passing only required values which don't have defaults set
@@ -272,9 +272,9 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**|  |
- **limit** | **float**|  | [optional] if omitted the server will use the default value of 0
+ **limit** | **int**|  | [optional] if omitted the server will use the default value of 0
  **name** | **str**|  | [optional] if omitted the server will use the default value of ""
- **page** | **float**|  | [optional] if omitted the server will use the default value of 1
+ **page** | **int**|  | [optional] if omitted the server will use the default value of 1
  **tags** | **[str]**|  | [optional] if omitted the server will use the default value of []
 
 ### Return type
@@ -326,8 +326,8 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     keyword = "Topic_JSON_V12" # str | 
-    limit = 1 # float |  (optional) if omitted the server will use the default value of 0
-    page = 1 # float |  (optional) if omitted the server will use the default value of 1
+    limit = 1 # int |  (optional) if omitted the server will use the default value of 0
+    page = 1 # int |  (optional) if omitted the server will use the default value of 1
 
     # example passing only required values which don't have defaults set
     try:
@@ -351,8 +351,8 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **keyword** | **str**|  |
- **limit** | **float**|  | [optional] if omitted the server will use the default value of 0
- **page** | **float**|  | [optional] if omitted the server will use the default value of 1
+ **limit** | **int**|  | [optional] if omitted the server will use the default value of 0
+ **page** | **int**|  | [optional] if omitted the server will use the default value of 1
 
 ### Return type
 
