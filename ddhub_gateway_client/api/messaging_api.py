@@ -173,7 +173,7 @@ class MessagingApi(object):
                     '_from':
                         (str,),
                     'amount':
-                        (float,),
+                        (int,),
                     'topic_name':
                         (str,),
                     'topic_owner':
@@ -461,7 +461,7 @@ class MessagingApi(object):
 
         Keyword Args:
             _from (str): date from which messages to be fetched. [optional]
-            amount (float): Latest amount of messages to be fetched. [optional]
+            amount (int): Latest amount of messages to be fetched. [optional]
             topic_name (str): topic name. [optional]
             topic_owner (str): application namespace. [optional]
             client_id (str): cursor for pointing to messages. [optional]
