@@ -1,7 +1,7 @@
 import time
 import ddhub_gateway_client
 from ddhub_gateway_client.api import topics_api
-from ddhub_gateway_client.model.paginated_search_topic_response import PaginatedSearchTopicResponse
+from ddhub_gateway_client.model.paginated_response import PaginatedResponse
 from pprint import pprint
 import os
 from py_dotenv import read_dotenv
@@ -9,7 +9,7 @@ from py_dotenv import read_dotenv
 #TODO check error 500 when optional are passed
 
 #these variables need to be set
-SEARCH_KEYWORD = "Topic_JSON_V12" # str | 
+SEARCH_KEYWORD = "Topic_JSON_VV52" # str | 
 SEARCH_LIMIT = 1 # float |  (optional) if omitted the server will use the default value of 0
 SEARCH_PAGE = 1 # float |  (optional) if omitted the server will use the default value of 1
 
