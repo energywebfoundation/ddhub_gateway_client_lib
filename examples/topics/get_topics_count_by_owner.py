@@ -1,12 +1,10 @@
 import time
 import ddhub_gateway_client
 from ddhub_gateway_client.api import topics_api
-from ddhub_gateway_client.model.topics_count_response import TopicsCountResponse
+from ddhub_gateway_client.model.topic_count_dto import TopicCountDto
 from pprint import pprint
 import os
 from py_dotenv import read_dotenv
-
-#TODO response should include owner but doesn't
 
 #these variables need to be set
 TOPIC_OWNER = ["torta.apps.eggplant.vege.iam.ewc","mini.apps.sliced.carrot.vege.iam.ewc"] # [str] | 

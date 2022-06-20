@@ -31,7 +31,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient(configuration) as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = identity_api.IdentityApi(api_client)
 
@@ -92,7 +92,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient(configuration) as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = identity_api.IdentityApi(api_client)
 
@@ -155,7 +155,7 @@ configuration = ddhub_gateway_client.Configuration(
 
 
 # Enter a context with an instance of the API client
-with ddhub_gateway_client.ApiClient(configuration) as api_client:
+with ddhub_gateway_client.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = identity_api.IdentityApi(api_client)
     create_identity_dto = CreateIdentityDto(

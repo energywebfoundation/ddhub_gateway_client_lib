@@ -150,7 +150,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **message_controlller_get_message**
-> GetMessagesResponseDto message_controlller_get_message(fqcn)
+> [GetMessagesResponseDto] message_controlller_get_message(fqcn)
 
 
 
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetMessagesResponseDto**](GetMessagesResponseDto.md)
+[**[GetMessagesResponseDto]**](GetMessagesResponseDto.md)
 
 ### Authorization
 

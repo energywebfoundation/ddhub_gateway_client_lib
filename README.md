@@ -17,9 +17,9 @@ Python >=3.6
 If the python package is hosted on a repository, you can install directly using:
 
 ```sh
-pip install git+https://github.com/energywebfoundation/ddhub_gateway_client_lib.git
+pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/energywebfoundation/ddhub_gateway_client_lib.git`)
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git`)
 
 Then import the package:
 ```python
@@ -99,7 +99,7 @@ Class | Method | HTTP request | Description
 *MessagingApi* | [**message_controlller_get_message**](docs/MessagingApi.md#message_controlller_get_message) | **GET** /api/v2/messages | 
 *MessagingApi* | [**message_controlller_upload_file**](docs/MessagingApi.md#message_controlller_upload_file) | **POST** /api/v2/messages/upload | 
 *TopicsApi* | [**topics_controller_delete_topics**](docs/TopicsApi.md#topics_controller_delete_topics) | **DELETE** /api/v2/topics/{id} | 
-*TopicsApi* | [**topics_controller_delete_topics_by_version**](docs/TopicsApi.md#topics_controller_delete_topics_by_version) | **DELETE** /api/v2/topics/{id}/versions/{version} | 
+*TopicsApi* | [**topics_controller_delete_topics_by_version**](docs/TopicsApi.md#topics_controller_delete_topics_by_version) | **DELETE** /api/v2/topics/{id}/versions/{versionNumber} | 
 *TopicsApi* | [**topics_controller_get_topic_history_by_id_and_version**](docs/TopicsApi.md#topics_controller_get_topic_history_by_id_and_version) | **GET** /api/v2/topics/{id}/versions/{versionNumber} | 
 *TopicsApi* | [**topics_controller_get_topics**](docs/TopicsApi.md#topics_controller_get_topics) | **GET** /api/v2/topics | 
 *TopicsApi* | [**topics_controller_get_topics_by_search**](docs/TopicsApi.md#topics_controller_get_topics_by_search) | **GET** /api/v2/topics/search | 
@@ -132,16 +132,17 @@ Class | Method | HTTP request | Description
  - [InlineResponse200](docs/InlineResponse200.md)
  - [InlineResponse503](docs/InlineResponse503.md)
  - [PaginatedResponse](docs/PaginatedResponse.md)
- - [PaginatedSearchTopicResponse](docs/PaginatedSearchTopicResponse.md)
+ - [PaginatedTopicResponse](docs/PaginatedTopicResponse.md)
  - [PostTopicBodyDto](docs/PostTopicBodyDto.md)
  - [PostTopicDto](docs/PostTopicDto.md)
+ - [PutTopicDto](docs/PutTopicDto.md)
  - [Recipients](docs/Recipients.md)
  - [RoleDto](docs/RoleDto.md)
  - [SendMessageDto](docs/SendMessageDto.md)
  - [SendMessagelResponseDto](docs/SendMessagelResponseDto.md)
  - [Status](docs/Status.md)
+ - [TopicCountDto](docs/TopicCountDto.md)
  - [TopicDto](docs/TopicDto.md)
- - [TopicsCountResponse](docs/TopicsCountResponse.md)
  - [UpdateChannelDto](docs/UpdateChannelDto.md)
  - [UpdateTopicBodyDto](docs/UpdateTopicBodyDto.md)
  - [UpdateTopicHistoryBodyDto](docs/UpdateTopicHistoryBodyDto.md)

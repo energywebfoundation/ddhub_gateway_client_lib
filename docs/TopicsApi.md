@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**topics_controller_delete_topics**](TopicsApi.md#topics_controller_delete_topics) | **DELETE** /api/v2/topics/{id} | 
-[**topics_controller_delete_topics_by_version**](TopicsApi.md#topics_controller_delete_topics_by_version) | **DELETE** /api/v2/topics/{id}/versions/{version} | 
+[**topics_controller_delete_topics_by_version**](TopicsApi.md#topics_controller_delete_topics_by_version) | **DELETE** /api/v2/topics/{id}/versions/{versionNumber} | 
 [**topics_controller_get_topic_history_by_id_and_version**](TopicsApi.md#topics_controller_get_topic_history_by_id_and_version) | **GET** /api/v2/topics/{id}/versions/{versionNumber} | 
 [**topics_controller_get_topics**](TopicsApi.md#topics_controller_get_topics) | **GET** /api/v2/topics | 
 [**topics_controller_get_topics_by_search**](TopicsApi.md#topics_controller_get_topics_by_search) | **GET** /api/v2/topics/search | 
@@ -84,7 +84,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **topics_controller_delete_topics_by_version**
-> DeleteTopic topics_controller_delete_topics_by_version(id, version)
+> DeleteTopic topics_controller_delete_topics_by_version(id, version_number)
 
 
 
@@ -109,11 +109,11 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     id = "62545547fe37f174d7715ff3" # str | id of the topic
-    version = "1.0.9" # str | version of the topic
+    version_number = "1.0.9" # str | version of the topic
 
     # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.topics_controller_delete_topics_by_version(id, version)
+        api_response = api_instance.topics_controller_delete_topics_by_version(id, version_number)
         pprint(api_response)
     except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_delete_topics_by_version: %s\n" % e)
@@ -125,7 +125,7 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| id of the topic |
- **version** | **str**| version of the topic |
+ **version_number** | **str**| version of the topic |
 
 ### Return type
 
@@ -246,8 +246,8 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
     api_instance = topics_api.TopicsApi(api_client)
     owner = "ddhub.apps.energyweb.iam.ewc" # str | 
     limit = 1 # int |  (optional) if omitted the server will use the default value of 0
+    page = 1 # int |  (optional) if omitted the server will use the default value of 0
     name = "topic name" # str |  (optional) if omitted the server will use the default value of ""
-    page = 1 # int |  (optional) if omitted the server will use the default value of 1
     tags = ["aggregator"] # [str] |  (optional) if omitted the server will use the default value of []
 
     # example passing only required values which don't have defaults set
@@ -260,7 +260,7 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.topics_controller_get_topics(owner, limit=limit, name=name, page=page, tags=tags)
+        api_response = api_instance.topics_controller_get_topics(owner, limit=limit, page=page, name=name, tags=tags)
         pprint(api_response)
     except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_get_topics: %s\n" % e)
@@ -273,8 +273,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**|  |
  **limit** | **int**|  | [optional] if omitted the server will use the default value of 0
+ **page** | **int**|  | [optional] if omitted the server will use the default value of 0
  **name** | **str**|  | [optional] if omitted the server will use the default value of ""
- **page** | **int**|  | [optional] if omitted the server will use the default value of 1
  **tags** | **[str]**|  | [optional] if omitted the server will use the default value of []
 
 ### Return type
@@ -301,7 +301,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **topics_controller_get_topics_by_search**
-> PaginatedSearchTopicResponse topics_controller_get_topics_by_search(keyword)
+> PaginatedResponse topics_controller_get_topics_by_search(keyword)
 
 
 
@@ -312,7 +312,7 @@ No authorization required
 import time
 import ddhub_gateway_client
 from ddhub_gateway_client.api import topics_api
-from ddhub_gateway_client.model.paginated_search_topic_response import PaginatedSearchTopicResponse
+from ddhub_gateway_client.model.paginated_response import PaginatedResponse
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -326,6 +326,7 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     keyword = "Topic_JSON_V12" # str | 
+    owner = "ddhub.apps.energyweb.iam.ewc" # str |  (optional)
     limit = 1 # int |  (optional) if omitted the server will use the default value of 0
     page = 1 # int |  (optional) if omitted the server will use the default value of 1
 
@@ -339,7 +340,7 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.topics_controller_get_topics_by_search(keyword, limit=limit, page=page)
+        api_response = api_instance.topics_controller_get_topics_by_search(keyword, owner=owner, limit=limit, page=page)
         pprint(api_response)
     except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_get_topics_by_search: %s\n" % e)
@@ -351,12 +352,13 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **keyword** | **str**|  |
+ **owner** | **str**|  | [optional]
  **limit** | **int**|  | [optional] if omitted the server will use the default value of 0
  **page** | **int**|  | [optional] if omitted the server will use the default value of 1
 
 ### Return type
 
-[**PaginatedSearchTopicResponse**](PaginatedSearchTopicResponse.md)
+[**PaginatedResponse**](PaginatedResponse.md)
 
 ### Authorization
 
@@ -377,7 +379,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **topics_controller_get_topics_count_by_owner**
-> TopicsCountResponse topics_controller_get_topics_count_by_owner(owner)
+> [TopicCountDto] topics_controller_get_topics_count_by_owner(owner)
 
 
 
@@ -388,7 +390,7 @@ No authorization required
 import time
 import ddhub_gateway_client
 from ddhub_gateway_client.api import topics_api
-from ddhub_gateway_client.model.topics_count_response import TopicsCountResponse
+from ddhub_gateway_client.model.topic_count_dto import TopicCountDto
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -420,7 +422,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TopicsCountResponse**](TopicsCountResponse.md)
+[**[TopicCountDto]**](TopicCountDto.md)
 
 ### Authorization
 
@@ -441,7 +443,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **topics_controller_get_topics_history_by_id**
-> PaginatedSearchTopicResponse topics_controller_get_topics_history_by_id(id)
+> PaginatedTopicResponse topics_controller_get_topics_history_by_id(id)
 
 
 
@@ -452,7 +454,7 @@ No authorization required
 import time
 import ddhub_gateway_client
 from ddhub_gateway_client.api import topics_api
-from ddhub_gateway_client.model.paginated_search_topic_response import PaginatedSearchTopicResponse
+from ddhub_gateway_client.model.paginated_topic_response import PaginatedTopicResponse
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -484,7 +486,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedSearchTopicResponse**](PaginatedSearchTopicResponse.md)
+[**PaginatedTopicResponse**](PaginatedTopicResponse.md)
 
 ### Authorization
 
@@ -582,7 +584,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **topics_controller_update_topics**
-> PostTopicDto topics_controller_update_topics(id, update_topic_body_dto)
+> PutTopicDto topics_controller_update_topics(id, update_topic_body_dto)
 
 
 
@@ -594,7 +596,7 @@ import time
 import ddhub_gateway_client
 from ddhub_gateway_client.api import topics_api
 from ddhub_gateway_client.model.update_topic_body_dto import UpdateTopicBodyDto
-from ddhub_gateway_client.model.post_topic_dto import PostTopicDto
+from ddhub_gateway_client.model.put_topic_dto import PutTopicDto
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -632,7 +634,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostTopicDto**](PostTopicDto.md)
+[**PutTopicDto**](PutTopicDto.md)
 
 ### Authorization
 

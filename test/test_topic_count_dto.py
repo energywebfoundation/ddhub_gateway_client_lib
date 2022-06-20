@@ -12,11 +12,11 @@ import sys
 import unittest
 
 import ddhub_gateway_client
-from ddhub_gateway_client.model.topics_count_response import TopicsCountResponse
+from ddhub_gateway_client.model.topic_count_dto import TopicCountDto
 
 
-class TestTopicsCountResponse(unittest.TestCase):
-    """TopicsCountResponse unit test stubs"""
+class TestTopicCountDto(unittest.TestCase):
+    """TopicCountDto unit test stubs"""
 
     def setUp(self):
         pass
@@ -24,10 +24,10 @@ class TestTopicsCountResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testTopicsCountResponse(self):
-        """Test TopicsCountResponse"""
+    def testTopicCountDto(self):
+        """Test TopicCountDto"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = TopicsCountResponse()  # noqa: E501
+        # model = TopicCountDto()  # noqa: E501
         pass
 
 

@@ -1,7 +1,7 @@
 import time
 import ddhub_gateway_client
 from ddhub_gateway_client.api import topics_api
-from ddhub_gateway_client.model.paginated_search_topic_response import PaginatedSearchTopicResponse
+from ddhub_gateway_client.model.paginated_topic_response import PaginatedTopicResponse
 from pprint import pprint
 import os
 from py_dotenv import read_dotenv

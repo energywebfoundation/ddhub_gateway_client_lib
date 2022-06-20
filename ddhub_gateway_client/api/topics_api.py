@@ -23,10 +23,11 @@ from ddhub_gateway_client.model_utils import (  # noqa: F401
 )
 from ddhub_gateway_client.model.delete_topic import DeleteTopic
 from ddhub_gateway_client.model.paginated_response import PaginatedResponse
-from ddhub_gateway_client.model.paginated_search_topic_response import PaginatedSearchTopicResponse
+from ddhub_gateway_client.model.paginated_topic_response import PaginatedTopicResponse
 from ddhub_gateway_client.model.post_topic_body_dto import PostTopicBodyDto
 from ddhub_gateway_client.model.post_topic_dto import PostTopicDto
-from ddhub_gateway_client.model.topics_count_response import TopicsCountResponse
+from ddhub_gateway_client.model.put_topic_dto import PutTopicDto
+from ddhub_gateway_client.model.topic_count_dto import TopicCountDto
 from ddhub_gateway_client.model.update_topic_body_dto import UpdateTopicBodyDto
 from ddhub_gateway_client.model.update_topic_history_body_dto import UpdateTopicHistoryBodyDto
 
@@ -95,7 +96,7 @@ class TopicsApi(object):
             settings={
                 'response_type': (DeleteTopic,),
                 'auth': [],
-                'endpoint_path': '/api/v2/topics/{id}/versions/{version}',
+                'endpoint_path': '/api/v2/topics/{id}/versions/{versionNumber}',
                 'operation_id': 'topics_controller_delete_topics_by_version',
                 'http_method': 'DELETE',
                 'servers': None,
@@ -103,11 +104,11 @@ class TopicsApi(object):
             params_map={
                 'all': [
                     'id',
-                    'version',
+                    'version_number',
                 ],
                 'required': [
                     'id',
-                    'version',
+                    'version_number',
                 ],
                 'nullable': [
                 ],
@@ -124,16 +125,16 @@ class TopicsApi(object):
                 'openapi_types': {
                     'id':
                         (str,),
-                    'version':
+                    'version_number':
                         (str,),
                 },
                 'attribute_map': {
                     'id': 'id',
-                    'version': 'version',
+                    'version_number': 'versionNumber',
                 },
                 'location_map': {
                     'id': 'path',
-                    'version': 'path',
+                    'version_number': 'path',
                 },
                 'collection_format_map': {
                 }
@@ -214,8 +215,8 @@ class TopicsApi(object):
                 'all': [
                     'owner',
                     'limit',
-                    'name',
                     'page',
+                    'name',
                     'tags',
                 ],
                 'required': [
@@ -238,25 +239,25 @@ class TopicsApi(object):
                         (str,),
                     'limit':
                         (int,),
-                    'name':
-                        (str,),
                     'page':
                         (int,),
+                    'name':
+                        (str,),
                     'tags':
                         ([str],),
                 },
                 'attribute_map': {
                     'owner': 'owner',
                     'limit': 'limit',
-                    'name': 'name',
                     'page': 'page',
+                    'name': 'name',
                     'tags': 'tags',
                 },
                 'location_map': {
                     'owner': 'query',
                     'limit': 'query',
-                    'name': 'query',
                     'page': 'query',
+                    'name': 'query',
                     'tags': 'query',
                 },
                 'collection_format_map': {
@@ -273,7 +274,7 @@ class TopicsApi(object):
         )
         self.topics_controller_get_topics_by_search_endpoint = _Endpoint(
             settings={
-                'response_type': (PaginatedSearchTopicResponse,),
+                'response_type': (PaginatedResponse,),
                 'auth': [],
                 'endpoint_path': '/api/v2/topics/search',
                 'operation_id': 'topics_controller_get_topics_by_search',
@@ -283,6 +284,7 @@ class TopicsApi(object):
             params_map={
                 'all': [
                     'keyword',
+                    'owner',
                     'limit',
                     'page',
                 ],
@@ -304,6 +306,8 @@ class TopicsApi(object):
                 'openapi_types': {
                     'keyword':
                         (str,),
+                    'owner':
+                        (str,),
                     'limit':
                         (int,),
                     'page':
@@ -311,11 +315,13 @@ class TopicsApi(object):
                 },
                 'attribute_map': {
                     'keyword': 'keyword',
+                    'owner': 'owner',
                     'limit': 'limit',
                     'page': 'page',
                 },
                 'location_map': {
                     'keyword': 'query',
+                    'owner': 'query',
                     'limit': 'query',
                     'page': 'query',
                 },
@@ -332,7 +338,7 @@ class TopicsApi(object):
         )
         self.topics_controller_get_topics_count_by_owner_endpoint = _Endpoint(
             settings={
-                'response_type': (TopicsCountResponse,),
+                'response_type': ([TopicCountDto],),
                 'auth': [],
                 'endpoint_path': '/api/v2/topics/count',
                 'operation_id': 'topics_controller_get_topics_count_by_owner',
@@ -382,7 +388,7 @@ class TopicsApi(object):
         )
         self.topics_controller_get_topics_history_by_id_endpoint = _Endpoint(
             settings={
-                'response_type': (PaginatedSearchTopicResponse,),
+                'response_type': (PaginatedTopicResponse,),
                 'auth': [],
                 'endpoint_path': '/api/v2/topics/{id}/versions',
                 'operation_id': 'topics_controller_get_topics_history_by_id',
@@ -481,7 +487,7 @@ class TopicsApi(object):
         )
         self.topics_controller_update_topics_endpoint = _Endpoint(
             settings={
-                'response_type': (PostTopicDto,),
+                'response_type': (PutTopicDto,),
                 'auth': [],
                 'endpoint_path': '/api/v2/topics/{id}',
                 'operation_id': 'topics_controller_update_topics',
@@ -678,7 +684,7 @@ class TopicsApi(object):
     def topics_controller_delete_topics_by_version(
         self,
         id,
-        version,
+        version_number,
         **kwargs
     ):
         """topics_controller_delete_topics_by_version  # noqa: E501
@@ -686,12 +692,12 @@ class TopicsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.topics_controller_delete_topics_by_version(id, version, async_req=True)
+        >>> thread = api.topics_controller_delete_topics_by_version(id, version_number, async_req=True)
         >>> result = thread.get()
 
         Args:
             id (str): id of the topic
-            version (str): version of the topic
+            version_number (str): version of the topic
 
         Keyword Args:
             _return_http_data_only (bool): response data without head status
@@ -752,8 +758,8 @@ class TopicsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['id'] = \
             id
-        kwargs['version'] = \
-            version
+        kwargs['version_number'] = \
+            version_number
         return self.topics_controller_delete_topics_by_version_endpoint.call_with_http_info(**kwargs)
 
     def topics_controller_get_topic_history_by_id_and_version(
@@ -855,8 +861,8 @@ class TopicsApi(object):
 
         Keyword Args:
             limit (int): [optional] if omitted the server will use the default value of 0
+            page (int): [optional] if omitted the server will use the default value of 0
             name (str): [optional] if omitted the server will use the default value of ""
-            page (int): [optional] if omitted the server will use the default value of 1
             tags ([str]): [optional] if omitted the server will use the default value of []
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -935,6 +941,7 @@ class TopicsApi(object):
             keyword (str):
 
         Keyword Args:
+            owner (str): [optional]
             limit (int): [optional] if omitted the server will use the default value of 0
             page (int): [optional] if omitted the server will use the default value of 1
             _return_http_data_only (bool): response data without head status
@@ -965,7 +972,7 @@ class TopicsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            PaginatedSearchTopicResponse
+            PaginatedResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -1042,7 +1049,7 @@ class TopicsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            TopicsCountResponse
+            [TopicCountDto]
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -1119,7 +1126,7 @@ class TopicsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            PaginatedSearchTopicResponse
+            PaginatedTopicResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -1275,7 +1282,7 @@ class TopicsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            PostTopicDto
+            PutTopicDto
                 If the method is called asynchronously, returns the request
                 thread.
         """
