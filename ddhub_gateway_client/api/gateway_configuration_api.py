@@ -45,8 +45,14 @@ class GatewayConfigurationApi(object):
             },
             params_map={
                 'all': [
+                    'certificate',
+                    'private_key',
+                    'ca_certificate',
                 ],
-                'required': [],
+                'required': [
+                    'certificate',
+                    'private_key',
+                ],
                 'nullable': [
                 ],
                 'enum': [
@@ -60,17 +66,31 @@ class GatewayConfigurationApi(object):
                 'allowed_values': {
                 },
                 'openapi_types': {
+                    'certificate':
+                        (file_type,),
+                    'private_key':
+                        (file_type,),
+                    'ca_certificate':
+                        (file_type,),
                 },
                 'attribute_map': {
+                    'certificate': 'certificate',
+                    'private_key': 'privateKey',
+                    'ca_certificate': 'caCertificate',
                 },
                 'location_map': {
+                    'certificate': 'form',
+                    'private_key': 'form',
+                    'ca_certificate': 'form',
                 },
                 'collection_format_map': {
                 }
             },
             headers_map={
                 'accept': [],
-                'content_type': [],
+                'content_type': [
+                    'multipart/form-data'
+                ]
             },
             api_client=api_client
         )
@@ -117,6 +137,8 @@ class GatewayConfigurationApi(object):
 
     def certificate_controller_save(
         self,
+        certificate,
+        private_key,
         **kwargs
     ):
         """certificate_controller_save  # noqa: E501
@@ -124,11 +146,15 @@ class GatewayConfigurationApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.certificate_controller_save(async_req=True)
+        >>> thread = api.certificate_controller_save(certificate, private_key, async_req=True)
         >>> result = thread.get()
 
+        Args:
+            certificate (file_type): certificate to be uploaded
+            private_key (file_type): privateKey to be uploaded
 
         Keyword Args:
+            ca_certificate (file_type): caCertificate to be uploaded. [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -185,6 +211,10 @@ class GatewayConfigurationApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['certificate'] = \
+            certificate
+        kwargs['private_key'] = \
+            private_key
         return self.certificate_controller_save_endpoint.call_with_http_info(**kwargs)
 
     def keys_controller_derive(

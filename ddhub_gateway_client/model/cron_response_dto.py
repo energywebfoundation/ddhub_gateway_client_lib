@@ -61,6 +61,9 @@ class CronResponseDto(ModelNormal):
             'TOPIC_REFRESH': "TOPIC_REFRESH",
             'SYMMETRIC_KEYS': "SYMMETRIC_KEYS",
             'PRIVATE_KEY': "PRIVATE_KEY",
+            'APPLICATIONS_REFRESH': "APPLICATIONS_REFRESH",
+            'HEARTBEAT': "HEARTBEAT",
+            'FILE_CLEANER': "FILE_CLEANER",
         },
         ('latest_status',): {
             'SUCCESS': "SUCCESS",

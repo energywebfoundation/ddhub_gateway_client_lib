@@ -136,7 +136,7 @@ class MessagingApi(object):
         )
         self.message_controlller_get_message_endpoint = _Endpoint(
             settings={
-                'response_type': (GetMessagesResponseDto,),
+                'response_type': ([GetMessagesResponseDto],),
                 'auth': [],
                 'endpoint_path': '/api/v2/messages',
                 'operation_id': 'message_controlller_get_message',
@@ -493,7 +493,7 @@ class MessagingApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            GetMessagesResponseDto
+            [GetMessagesResponseDto]
                 If the method is called asynchronously, returns the request
                 thread.
         """

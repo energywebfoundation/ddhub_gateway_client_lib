@@ -85,8 +85,11 @@ class ApplicationDTO(ModelNormal):
             'logo_url': (str,),  # noqa: E501
             'website_url': (str,),  # noqa: E501
             'description': (str,),  # noqa: E501
+            'created_date': (str,),  # noqa: E501
+            'updated_date': (str,),  # noqa: E501
             'namespace': (str,),  # noqa: E501
-            'topics_count': (float,),  # noqa: E501
+            'roles': ([str],),  # noqa: E501
+            'topics_count': (int,),  # noqa: E501
         }
 
     @cached_property
@@ -99,7 +102,10 @@ class ApplicationDTO(ModelNormal):
         'logo_url': 'logoUrl',  # noqa: E501
         'website_url': 'websiteUrl',  # noqa: E501
         'description': 'description',  # noqa: E501
+        'created_date': 'createdDate',  # noqa: E501
+        'updated_date': 'updatedDate',  # noqa: E501
         'namespace': 'namespace',  # noqa: E501
+        'roles': 'roles',  # noqa: E501
         'topics_count': 'topicsCount',  # noqa: E501
     }
 
@@ -110,7 +116,7 @@ class ApplicationDTO(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, app_name, logo_url, website_url, description, namespace, topics_count, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, app_name, logo_url, website_url, description, created_date, updated_date, namespace, roles, topics_count, *args, **kwargs):  # noqa: E501
         """ApplicationDTO - a model defined in OpenAPI
 
         Args:
@@ -118,8 +124,11 @@ class ApplicationDTO(ModelNormal):
             logo_url (str): url of the logo
             website_url (str): url of the website
             description (str): description of the app
+            created_date (str): When application got stored in cache
+            updated_date (str): When application got stored in cache
             namespace (str): application namespace
-            topics_count (float): number of topics
+            roles ([str]): application assigned roles
+            topics_count (int): number of topics
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -183,7 +192,10 @@ class ApplicationDTO(ModelNormal):
         self.logo_url = logo_url
         self.website_url = website_url
         self.description = description
+        self.created_date = created_date
+        self.updated_date = updated_date
         self.namespace = namespace
+        self.roles = roles
         self.topics_count = topics_count
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -205,7 +217,7 @@ class ApplicationDTO(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, app_name, logo_url, website_url, description, namespace, topics_count, *args, **kwargs):  # noqa: E501
+    def __init__(self, app_name, logo_url, website_url, description, created_date, updated_date, namespace, roles, topics_count, *args, **kwargs):  # noqa: E501
         """ApplicationDTO - a model defined in OpenAPI
 
         Args:
@@ -213,8 +225,11 @@ class ApplicationDTO(ModelNormal):
             logo_url (str): url of the logo
             website_url (str): url of the website
             description (str): description of the app
+            created_date (str): When application got stored in cache
+            updated_date (str): When application got stored in cache
             namespace (str): application namespace
-            topics_count (float): number of topics
+            roles ([str]): application assigned roles
+            topics_count (int): number of topics
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -276,7 +291,10 @@ class ApplicationDTO(ModelNormal):
         self.logo_url = logo_url
         self.website_url = website_url
         self.description = description
+        self.created_date = created_date
+        self.updated_date = updated_date
         self.namespace = namespace
+        self.roles = roles
         self.topics_count = topics_count
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

@@ -14,11 +14,11 @@ import unittest
 import ddhub_gateway_client
 from ddhub_gateway_client.model.get_topic_search_dto import GetTopicSearchDto
 globals()['GetTopicSearchDto'] = GetTopicSearchDto
-from ddhub_gateway_client.model.paginated_search_topic_response import PaginatedSearchTopicResponse
+from ddhub_gateway_client.model.paginated_topic_response import PaginatedTopicResponse
 
 
-class TestPaginatedSearchTopicResponse(unittest.TestCase):
-    """PaginatedSearchTopicResponse unit test stubs"""
+class TestPaginatedTopicResponse(unittest.TestCase):
+    """PaginatedTopicResponse unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,10 +26,10 @@ class TestPaginatedSearchTopicResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testPaginatedSearchTopicResponse(self):
-        """Test PaginatedSearchTopicResponse"""
+    def testPaginatedTopicResponse(self):
+        """Test PaginatedTopicResponse"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = PaginatedSearchTopicResponse()  # noqa: E501
+        # model = PaginatedTopicResponse()  # noqa: E501
         pass
 
 

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **certificate_controller_save**
-> certificate_controller_save()
+> certificate_controller_save(certificate, private_key)
 
 
 
@@ -32,17 +32,32 @@ configuration = ddhub_gateway_client.Configuration(
 with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = gateway_configuration_api.GatewayConfigurationApi(api_client)
+    certificate = open('/path/to/file', 'rb') # file_type | certificate to be uploaded
+    private_key = open('/path/to/file', 'rb') # file_type | privateKey to be uploaded
+    ca_certificate = open('/path/to/file', 'rb') # file_type | caCertificate to be uploaded (optional)
 
-    # example, this endpoint has no required or optional parameters
+    # example passing only required values which don't have defaults set
     try:
-        api_instance.certificate_controller_save()
+        api_instance.certificate_controller_save(certificate, private_key)
+    except ddhub_gateway_client.ApiException as e:
+        print("Exception when calling GatewayConfigurationApi->certificate_controller_save: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        api_instance.certificate_controller_save(certificate, private_key, ca_certificate=ca_certificate)
     except ddhub_gateway_client.ApiException as e:
         print("Exception when calling GatewayConfigurationApi->certificate_controller_save: %s\n" % e)
 ```
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **certificate** | **file_type**| certificate to be uploaded |
+ **private_key** | **file_type**| privateKey to be uploaded |
+ **ca_certificate** | **file_type**| caCertificate to be uploaded | [optional]
 
 ### Return type
 
@@ -54,7 +69,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: Not defined
 
 
@@ -62,7 +77,9 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** |  |  -  |
+**200** | Certificates Uploaded Successfully |  -  |
+**400** | Validation failed or some requirements were not fully satisfied |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
