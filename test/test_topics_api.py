@@ -11,17 +11,22 @@
 import unittest
 
 import ddhub_gateway_client
+from ddhub_gateway_client.api import topics_api
 from ddhub_gateway_client.api.topics_api import TopicsApi  # noqa: E501
+from ddhub_gateway_client.model.paginated_response import PaginatedResponse
 
 
 class TestTopicsApi(unittest.TestCase):
     """TopicsApi unit test stubs"""
-
+    configuration = ddhub_gateway_client.Configuration(
+        host = "https://ddhub-gateway-dev.energyweb.org"
+    )
     def setUp(self):
-        self.api = TopicsApi()  # noqa: E501
+        self.api_client = ddhub_gateway_client.ApiClient(self.configuration)
+        self.api_instance =  TopicsApi(self.api_client)
 
     def tearDown(self):
-        pass
+        self.api_client.close()
 
     def test_topics_controller_delete_topics(self):
         """Test case for topics_controller_delete_topics
@@ -45,7 +50,10 @@ class TestTopicsApi(unittest.TestCase):
         """Test case for topics_controller_get_topics
 
         """
-        pass
+        owner = "ddhub.apps.energyweb.iam.ewc"
+        api_response_body, api_response_status, api_response_headers = self.api_instance.topics_controller_get_topics(owner, _return_http_data_only=False)
+        self.assertEqual(200,api_response_status)
+        self.assertIsInstance(api_response_body, PaginatedResponse)
 
     def test_topics_controller_get_topics_by_search(self):
         """Test case for topics_controller_get_topics_by_search
