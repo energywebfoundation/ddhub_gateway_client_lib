@@ -8,12 +8,17 @@
 """
 
 
+from ast import keyword
 import unittest
 
 import ddhub_gateway_client
 from ddhub_gateway_client.api import topics_api
-from ddhub_gateway_client.api.topics_api import TopicsApi  # noqa: E501
+from ddhub_gateway_client.api.topics_api import TopicsApi
+from ddhub_gateway_client.exceptions import ApiException  # noqa: E501
 from ddhub_gateway_client.model.paginated_response import PaginatedResponse
+from ddhub_gateway_client.model.paginated_topic_response import PaginatedTopicResponse
+from ddhub_gateway_client.model.post_topic_dto import PostTopicDto
+from ddhub_gateway_client.model.topic_count_dto import TopicCountDto
 
 
 class TestTopicsApi(unittest.TestCase):
@@ -21,6 +26,8 @@ class TestTopicsApi(unittest.TestCase):
     configuration = ddhub_gateway_client.Configuration(
         host = "https://ddhub-gateway-dev.energyweb.org"
     )
+    owner = "testing01.apps.aemotest.iam.ewc"
+    api_client:ddhub_gateway_client.ApiClient = None
     def setUp(self):
         self.api_client = ddhub_gateway_client.ApiClient(self.configuration)
         self.api_instance =  TopicsApi(self.api_client)
@@ -40,38 +47,165 @@ class TestTopicsApi(unittest.TestCase):
         """
         pass
 
+
+    def test_topics_controller_get_topic_history_by_id_and_version_invalid_param(self):
+        """Test case for topics_controller_get_topics_history_by_id
+        without id parameter
+        """
+        topic_id = "626afc7f8f3d9d41e4056af3"
+        with self.assertRaises(TypeError):
+            self.api_instance.topics_controller_get_topic_history_by_id_and_version()
+        with self.assertRaises(TypeError):
+            self.api_instance.topics_controller_get_topic_history_by_id_and_version(topic_id)
+
+    def test_topics_controller_get_topic_history_by_id_and_version_invalid_id_param_type(self):
+        """Test case for topics_controller_get_topics_history_by_id
+        with invalid id parameter type
+        """
+        topic_id = 123456789
+        with self.assertRaises(TypeError):
+            self.api_instance.topics_controller_get_topic_history_by_id_and_version(topic_id)
+    
+    def test_topics_controller_get_topic_history_by_id_and_version_invalid_version_param_type(self):
+        """Test case for topics_controller_get_topics_history_by_id
+        with invalid id parameter type
+        """
+        topic_id = "626afc7f8f3d9d41e4056af3"
+        topic_version1 = 1
+        topic_version2 = "1"
+        with self.assertRaises(TypeError):
+            self.api_instance.topics_controller_get_topic_history_by_id_and_version(topic_id, topic_version1)
+        with self.assertRaises(ApiException):
+            self.api_instance.topics_controller_get_topic_history_by_id_and_version(topic_id, topic_version2)
+
     def test_topics_controller_get_topic_history_by_id_and_version(self):
         """Test case for topics_controller_get_topic_history_by_id_and_version
-
         """
-        pass
+        topic_id = "626afc7f8f3d9d41e4056af3"
+        topic_version = "1.0.0"
+        api_response_body, api_response_status, api_response_headers = \
+            self.api_instance.topics_controller_get_topic_history_by_id_and_version(
+                topic_id,
+                topic_version, 
+                _return_http_data_only=False
+            )
+
+        self.assertEqual(200,api_response_status)
+
+        self.assertIsInstance(api_response_body, PostTopicDto)
+
+
+    def test_topics_controller_get_topics_invalid_param(self):
+        """Test case for topics_controller_get_topics
+        without owner
+        """
+        with self.assertRaises(TypeError):
+            self.api_instance.topics_controller_get_topics()
 
     def test_topics_controller_get_topics(self):
         """Test case for topics_controller_get_topics
-
         """
-        owner = "ddhub.apps.energyweb.iam.ewc"
-        api_response_body, api_response_status, api_response_headers = self.api_instance.topics_controller_get_topics(owner, _return_http_data_only=False)
+        api_response_body, api_response_status, api_response_headers = \
+            self.api_instance.topics_controller_get_topics(
+                self.owner, 
+                _return_http_data_only=False
+            )
+
         self.assertEqual(200,api_response_status)
+
         self.assertIsInstance(api_response_body, PaginatedResponse)
 
+    def test_topics_controller_get_topics_by_search_invalid_param(self):
+        """Test case for topics_controller_get_topics_by_search
+        without keyword parameter
+        """
+        keyword = "Topic_JSON"
+        with self.assertRaises(TypeError):
+            self.api_instance.topics_controller_get_topics_by_search()
+    
+    def test_topics_controller_get_topics_by_search_invalid_page_param(self):
+        """Test case for topics_controller_get_topics_by_search
+        with invalid page parameter
+        """
+        keyword = "Topic_JSON"
+        page = 0
+        with self.assertRaises(TypeError):
+            self.api_instance.topics_controller_get_topics_by_search(keyword, page=page)
+        
     def test_topics_controller_get_topics_by_search(self):
         """Test case for topics_controller_get_topics_by_search
-
         """
-        pass
+        keyword = "Topic_JSON"
+        api_response_body, api_response_status, api_response_headers = \
+            self.api_instance.topics_controller_get_topics_by_search(
+                keyword, 
+                _return_http_data_only=False
+            )
 
+        self.assertEqual(200,api_response_status)
+
+        self.assertIsInstance(api_response_body, PaginatedResponse)
+
+
+    def test_topics_controller_get_topics_count_by_owner_invalid_param(self):
+        """Test case for topics_controller_get_topics_count_by_owner
+        without owner parameter
+        """
+        with self.assertRaises(TypeError):
+            self.api_instance.topics_controller_get_topics_count_by_owner()
+    
+    def test_topics_controller_get_topics_count_by_owner_invalid_param_type(self):
+        """Test case for topics_controller_get_topics_count_by_owner
+        with invalid owner parameter type
+        """
+        with self.assertRaises(TypeError):
+            self.api_instance.topics_controller_get_topics_count_by_owner(self.owner)
+    
     def test_topics_controller_get_topics_count_by_owner(self):
         """Test case for topics_controller_get_topics_count_by_owner
-
         """
-        pass
+        owners = [self.owner]
+
+        api_response_body, api_response_status, api_response_headers = \
+            self.api_instance.topics_controller_get_topics_count_by_owner(
+                owners, 
+                _return_http_data_only=False
+            )
+
+        self.assertEqual(200,api_response_status)
+
+        self.assertIsInstance(api_response_body, (list,TopicCountDto))
+
+
+    def test_topics_controller_get_topics_history_by_id_invalid_param(self):
+        """Test case for topics_controller_get_topics_history_by_id
+        without id parameter
+        """
+        with self.assertRaises(TypeError):
+            self.api_instance.topics_controller_get_topics_history_by_id()
+
+    def test_topics_controller_get_topics_history_by_id_invalid_param_type(self):
+        """Test case for topics_controller_get_topics_history_by_id
+        with invalid id parameter type
+        """
+        topic_id = 123456789
+        with self.assertRaises(TypeError):
+            self.api_instance.topics_controller_get_topics_history_by_id(topic_id)
 
     def test_topics_controller_get_topics_history_by_id(self):
         """Test case for topics_controller_get_topics_history_by_id
-
         """
-        pass
+        topic_id = "626afc7f8f3d9d41e4056af3"
+        api_response_body, api_response_status, api_response_headers = \
+            self.api_instance.topics_controller_get_topics_history_by_id(
+                topic_id, 
+                _return_http_data_only=False
+            )
+
+        self.assertEqual(200,api_response_status)
+
+        self.assertIsInstance(api_response_body, PaginatedTopicResponse)
+
 
     def test_topics_controller_post_topics(self):
         """Test case for topics_controller_post_topics

@@ -17,8 +17,10 @@ from ddhub_gateway_client.model.topic_dto import TopicDto
 
 class TestTopicDto(unittest.TestCase):
     """TopicDto unit test stubs"""
-
+    topic_name = "Topic_JSON_Test_B1"
+    topic_owner = "ddhub.apps.energyweb.iam.ewc"
     def setUp(self):
+        self.model = TopicDto(topic_name=self.topic_name, owner=self.topic_owner)
         pass
 
     def tearDown(self):
@@ -26,9 +28,12 @@ class TestTopicDto(unittest.TestCase):
 
     def testTopicDto(self):
         """Test TopicDto"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = TopicDto()  # noqa: E501
-        pass
+        t_name = self.model.topic_name
+        t_owner = self.model.owner
+        self.assertEqual(self.topic_name, t_name)
+        self.assertEqual(self.topic_owner, t_owner)
+        self.assertRegex(t_name, "^[\w]*$", "Value is not alphanumeric with underscore")
+        self.assertRegex(t_owner,"^[\w]*(?:\.[\w]+)*$", "Value is not dot seperated string")
 
 
 if __name__ == '__main__':
