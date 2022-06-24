@@ -52,12 +52,20 @@ class TestTopicsApi(unittest.TestCase):
     )
     owner = "testing01.apps.aemotest.iam.ewc"
     api_client:ddhub_gateway_client.ApiClient = None
+    topic:PostTopicDto = None
 
     def setUp(self):
         self.api_client = ddhub_gateway_client.ApiClient(self.configuration)
         self.api_instance =  TopicsApi(self.api_client)
+        
+        ptbd = constructPostTopicBodyDto()
+
+        self.topic=self.api_instance.topics_controller_post_topics(ptbd)
 
     def tearDown(self):
+        if self.topic is not None:
+            self.api_instance.topics_controller_delete_topics(self.topic.id)
+            self.topic = None
         self.api_client.close()
 
 
@@ -74,18 +82,18 @@ class TestTopicsApi(unittest.TestCase):
         """Test case for topics_controller_delete_topics
 
         """
-        post_topic_body_dto = constructPostTopicBodyDto()
-        topic_id = self.api_instance.topics_controller_post_topics(post_topic_body_dto).id
         
         api_response_body, api_response_status, api_response_headers = \
             self.api_instance.topics_controller_delete_topics(
-                topic_id, 
+                self.topic.id, 
                 _return_http_data_only=False
             )
 
         self.assertEqual(200,api_response_status)
 
         self.assertIsInstance(api_response_body, DeleteTopic)
+
+        self.topic = None
 
 
     def test_topics_controller_delete_topics_by_version_invalid_id_param(self):
@@ -121,19 +129,18 @@ class TestTopicsApi(unittest.TestCase):
         """Test case for topics_controller_delete_topics_by_version
 
         """
-        post_topic_body_dto = constructPostTopicBodyDto()
-        topic_id = self.api_instance.topics_controller_post_topics(post_topic_body_dto).id
         
         api_response_body, api_response_status, api_response_headers = \
             self.api_instance.topics_controller_delete_topics_by_version(
-                topic_id,
-                post_topic_body_dto.version,
+                self.topic.id,
+                self.topic.version,
                 _return_http_data_only=False
             )
 
         self.assertEqual(200,api_response_status)
 
         self.assertIsInstance(api_response_body, DeleteTopic)
+        self.topic = None
 
 
     def test_topics_controller_get_topic_history_by_id_and_version_invalid_param(self):
@@ -169,18 +176,23 @@ class TestTopicsApi(unittest.TestCase):
     def test_topics_controller_get_topic_history_by_id_and_version(self):
         """Test case for topics_controller_get_topic_history_by_id_and_version
         """
-        topic_id = "626afc7f8f3d9d41e4056af3"
-        topic_version = "1.0.0"
+
         api_response_body, api_response_status, api_response_headers = \
             self.api_instance.topics_controller_get_topic_history_by_id_and_version(
-                topic_id,
-                topic_version, 
+                self.topic.id,
+                self.topic.version, 
                 _return_http_data_only=False
             )
 
         self.assertEqual(200,api_response_status)
 
         self.assertIsInstance(api_response_body, PostTopicDto)
+
+        self.assertEqual(api_response_body.id, self.topic.id)
+
+        self.assertEqual(api_response_body.name, self.topic.name)
+
+        self.assertEqual(api_response_body.version, self.topic.version)
 
 
     def test_topics_controller_get_topics_invalid_param(self):
@@ -284,10 +296,9 @@ class TestTopicsApi(unittest.TestCase):
     def test_topics_controller_get_topics_history_by_id(self):
         """Test case for topics_controller_get_topics_history_by_id
         """
-        topic_id = "626afc7f8f3d9d41e4056af3"
         api_response_body, api_response_status, api_response_headers = \
             self.api_instance.topics_controller_get_topics_history_by_id(
-                topic_id, 
+                self.topic.id, 
                 _return_http_data_only=False
             )
 
@@ -337,10 +348,7 @@ class TestTopicsApi(unittest.TestCase):
         self.assertEqual(201,api_response_status)
 
         self.assertIsInstance(api_response_body, PostTopicDto)
-        self.api_instance.topics_controller_delete_topics(
-                api_response_body.id, 
-                _return_http_data_only=False
-            )
+        self.api_instance.topics_controller_delete_topics(api_response_body.id)
 
 
     def test_topics_controller_update_topics_invalid_id_param(self):
@@ -359,14 +367,12 @@ class TestTopicsApi(unittest.TestCase):
         """Test case for topics_controller_update_topics
 
         """
-        post_topic_body_dto = constructPostTopicBodyDto()
-        topic_id=self.api_instance.topics_controller_post_topics(post_topic_body_dto).id
         
         update_topic_body_dto = UpdateTopicBodyDto(tags=[])
         
         api_response_body, api_response_status, api_response_headers = \
             self.api_instance.topics_controller_update_topics(
-                topic_id, 
+                self.topic.id, 
                 update_topic_body_dto,
                 _return_http_data_only=False
             )
@@ -374,11 +380,6 @@ class TestTopicsApi(unittest.TestCase):
         self.assertEqual(200,api_response_status)
 
         self.assertIsInstance(api_response_body, PutTopicDto)
-
-        self.api_instance.topics_controller_delete_topics(
-                api_response_body.id, 
-                _return_http_data_only=False
-            )
 
 
     def test_topics_controller_update_topics_by_id_and_version_invalid_id_param(self):
@@ -400,15 +401,13 @@ class TestTopicsApi(unittest.TestCase):
     def test_topics_controller_update_topics_by_id_and_version(self):
         """Test case for topics_controller_update_topics_by_id_and_version
         """
-        post_topic_body_dto = constructPostTopicBodyDto()
-        topic:PostTopicDto = self.api_instance.topics_controller_post_topics(post_topic_body_dto)
 
         update_topic_history_body_dto = UpdateTopicHistoryBodyDto(schema=json.dumps({}))
         
         api_response_body, api_response_status, api_response_headers = \
             self.api_instance.topics_controller_update_topics_by_id_and_version(
-                topic.id, 
-                topic.version,
+                self.topic.id, 
+                self.topic.version,
                 update_topic_history_body_dto,
                 _return_http_data_only=False
             )
@@ -417,10 +416,6 @@ class TestTopicsApi(unittest.TestCase):
 
         self.assertIsInstance(api_response_body, PostTopicDto)
 
-        self.api_instance.topics_controller_delete_topics(
-                api_response_body.id, 
-                _return_http_data_only=False
-            )
         
 
 
