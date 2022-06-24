@@ -8,6 +8,7 @@
 """
 
 
+import json
 import sys
 import unittest
 
@@ -24,11 +25,27 @@ class TestUpdateTopicHistoryBodyDto(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def testUpdateTopicHistoryBodyDto_invalid_type_param(self):
+        """Test UpdateTopicHistoryBodyDto with invalid schema"""
+        schema={}
+        with self.assertRaises(TypeError):
+            model = UpdateTopicHistoryBodyDto(schema=schema)
+
+
     def testUpdateTopicHistoryBodyDto(self):
         """Test UpdateTopicHistoryBodyDto"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = UpdateTopicHistoryBodyDto()  # noqa: E501
-        pass
+        schema = json.dumps({
+            "type":"object",
+            "properties":{
+                "data":{
+                    "type":"number"
+                },
+            },
+        })
+        model = UpdateTopicHistoryBodyDto(schema)
+
+        self.assertIsNotNone(model)
+        self.assertEqual(model.schema, schema)
 
 
 if __name__ == '__main__':

@@ -45,7 +45,7 @@ class TestPostTopicBodyDto(unittest.TestCase):
             owner="testing01.apps.aemotest.iam.ewc",
             tags=['test_tag']
         )
-    
+
     def testPostTopicBodyDto_invalid_schema_type(self):
         with self.assertRaises(ApiValueError):
             model = PostTopicBodyDto(
@@ -61,6 +61,18 @@ class TestPostTopicBodyDto(unittest.TestCase):
                     },
                     'required':['rrp',]
                 }),
+                version="1.0.0",
+                owner="testing01.apps.aemotest.iam.ewc",
+                tags=['test_tag']
+            )
+
+    
+    def testPostTopicBodyDto_invalid_schema(self):
+        with self.assertRaises(ApiValueError):
+            model = PostTopicBodyDto(
+                name = "Topic_JSON_test_py",
+                schema_type= "TEST",
+                schema={},
                 version="1.0.0",
                 owner="testing01.apps.aemotest.iam.ewc",
                 tags=['test_tag']

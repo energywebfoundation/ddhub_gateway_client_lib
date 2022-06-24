@@ -93,6 +93,11 @@ class TestTopicsApi(unittest.TestCase):
 
         self.assertIsInstance(api_response_body, DeleteTopic)
 
+        api_response_body=self.api_instance.topics_controller_get_topics_history_by_id(
+            self.topic.id, 
+        )
+        self.assertListEqual(api_response_body.records,[])
+
         self.topic = None
 
 
@@ -140,6 +145,12 @@ class TestTopicsApi(unittest.TestCase):
         self.assertEqual(200,api_response_status)
 
         self.assertIsInstance(api_response_body, DeleteTopic)
+
+        api_response_body=self.api_instance.topics_controller_get_topics_history_by_id(
+            self.topic.id, 
+        )
+        self.assertListEqual(api_response_body.records,[])
+
         self.topic = None
 
 
@@ -236,7 +247,7 @@ class TestTopicsApi(unittest.TestCase):
     def test_topics_controller_get_topics_by_search(self):
         """Test case for topics_controller_get_topics_by_search
         """
-        keyword = "Topic_JSON"
+        keyword = "Topic_JSON_test_py_"
         api_response_body, api_response_status, api_response_headers = \
             self.api_instance.topics_controller_get_topics_by_search(
                 keyword, 
@@ -246,6 +257,8 @@ class TestTopicsApi(unittest.TestCase):
         self.assertEqual(200,api_response_status)
 
         self.assertIsInstance(api_response_body, PaginatedResponse)
+
+        self.assertEqual(api_response_body.count,1)
 
 
     def test_topics_controller_get_topics_count_by_owner_invalid_param(self):
@@ -306,6 +319,8 @@ class TestTopicsApi(unittest.TestCase):
 
         self.assertIsInstance(api_response_body, PaginatedTopicResponse)
 
+        self.assertEqual(api_response_body.records[0].id, self.topic.id)
+
 
     def test_topics_controller_post_topics_duplicate(self):
         """Test case for topics_controller_post_topics
@@ -348,6 +363,14 @@ class TestTopicsApi(unittest.TestCase):
         self.assertEqual(201,api_response_status)
 
         self.assertIsInstance(api_response_body, PostTopicDto)
+
+        resp=self.api_instance.topics_controller_get_topic_history_by_id_and_version(
+            api_response_body.id, 
+            api_response_body.version
+        )
+
+        self.assertEqual(api_response_body.name, post_topic_body_dto.name)
+
         self.api_instance.topics_controller_delete_topics(api_response_body.id)
 
 
@@ -362,6 +385,26 @@ class TestTopicsApi(unittest.TestCase):
                 topic_id, 
                 update_topic_body_dto
             )
+
+    def test_topics_controller_update_topics_invalid_schema_param(self):
+        """Test case for topics_controller_update_topics
+        with additional schema parameter
+        """
+
+        schema = json.dumps({"test":"topic"})
+
+        update_topic_body_dto = UpdateTopicBodyDto(tags=[], schema=schema)
+        self.api_instance.topics_controller_update_topics(
+            self.topic.id, 
+            update_topic_body_dto,
+            _return_http_data_only=False
+        )
+        resp = self.api_instance.topics_controller_get_topic_history_by_id_and_version(
+            self.topic.id, 
+            self.topic.version
+            )
+        self.assertNotEqual(resp.schema, schema)
+
 
     def test_topics_controller_update_topics(self):
         """Test case for topics_controller_update_topics
@@ -380,6 +423,13 @@ class TestTopicsApi(unittest.TestCase):
         self.assertEqual(200,api_response_status)
 
         self.assertIsInstance(api_response_body, PutTopicDto)
+
+        resp=self.api_instance.topics_controller_get_topic_history_by_id_and_version(
+            api_response_body.id, 
+            self.topic.version
+        )
+
+        self.assertListEqual(api_response_body.tags, update_topic_body_dto.tags)
 
 
     def test_topics_controller_update_topics_by_id_and_version_invalid_id_param(self):
@@ -415,6 +465,13 @@ class TestTopicsApi(unittest.TestCase):
         self.assertEqual(200,api_response_status)
 
         self.assertIsInstance(api_response_body, PostTopicDto)
+
+        resp=self.api_instance.topics_controller_get_topic_history_by_id_and_version(
+            api_response_body.id, 
+            api_response_body.version
+        )
+
+        self.assertEqual(resp.schema, update_topic_history_body_dto.schema)
 
         
 
