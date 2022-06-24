@@ -8,10 +8,12 @@
 """
 
 
+import json
 import sys
 import unittest
 
 import ddhub_gateway_client
+from ddhub_gateway_client.exceptions import ApiValueError
 from ddhub_gateway_client.model.post_topic_body_dto import PostTopicBodyDto
 
 
@@ -26,9 +28,43 @@ class TestPostTopicBodyDto(unittest.TestCase):
 
     def testPostTopicBodyDto(self):
         """Test PostTopicBodyDto"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = PostTopicBodyDto()  # noqa: E501
-        pass
+        model = PostTopicBodyDto(
+            name = "Topic_JSON_test_py",
+            schema_type= "JSD7",
+            schema=json.dumps({
+                '$schema': 'http://json-schema.org/draft-07/schema#',
+                'type': 'object', 
+                'properties': {
+                    'rrp': {
+                        'type': 'integer'
+                    },
+                },
+                'required':['rrp',]
+            }),
+            version="1.0.0",
+            owner="testing01.apps.aemotest.iam.ewc",
+            tags=['test_tag']
+        )
+    
+    def testPostTopicBodyDto_invalid_schema_type(self):
+        with self.assertRaises(ApiValueError):
+            model = PostTopicBodyDto(
+                name = "Topic_JSON_test_py",
+                schema_type= "TEST",
+                schema=json.dumps({
+                    '$schema': 'http://json-schema.org/draft-07/schema#',
+                    'type': 'object', 
+                    'properties': {
+                        'rrp': {
+                            'type': 'integer'
+                        },
+                    },
+                    'required':['rrp',]
+                }),
+                version="1.0.0",
+                owner="testing01.apps.aemotest.iam.ewc",
+                tags=['test_tag']
+            )
 
 
 if __name__ == '__main__':
