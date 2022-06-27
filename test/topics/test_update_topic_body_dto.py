@@ -23,12 +23,18 @@ class TestUpdateTopicBodyDto(unittest.TestCase):
 
     def tearDown(self):
         pass
+    
+    def testUpdateTopicBodyDto_invalid(self):
+        """Test UpdateTopicBodyDto"""
+        with self.assertRaises(TypeError):
+            model = UpdateTopicBodyDto("test_tag")
 
     def testUpdateTopicBodyDto(self):
         """Test UpdateTopicBodyDto"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = UpdateTopicBodyDto()  # noqa: E501
-        pass
+        tags=['test_tag']
+        model = UpdateTopicBodyDto(tags=tags)
+        self.assertIsNotNone(model)
+        self.assertListEqual(model.tags, tags)
 
 
 if __name__ == '__main__':
