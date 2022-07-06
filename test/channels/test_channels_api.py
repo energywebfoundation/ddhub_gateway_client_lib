@@ -10,7 +10,6 @@
 
 import unittest
 import uuid
-from datetime import date, datetime
 
 import ddhub_gateway_client
 from ddhub_gateway_client.exceptions import ApiException, ApiValueError
@@ -18,51 +17,43 @@ from ddhub_gateway_client.api.channels_api import ChannelsApi  # noqa: E501
 from ddhub_gateway_client.models import CreateChannelDto, ChannelConditionsDto, GetChannelResponseDto, GetChannelQualifiedDidsDto, UpdateChannelDto
 
 
+def construct_create_channel_dto():
+    rand_fqcn = str(uuid.uuid4()).replace("-", ".")
+    return CreateChannelDto(
+        fqcn = rand_fqcn,
+        payload_encryption=False,
+        type="sub",
+        conditions=ChannelConditionsDto(
+            dids=[],
+            roles=[],
+            topics=[],
+        )
+    )
+    
 class TestChannelsApi(unittest.TestCase):
     """ChannelsApi unit test stubs"""
-    
     configuration = ddhub_gateway_client.Configuration(
         host = "https://ddhub-gateway-dev.energyweb.org"
     )
     api_client:ddhub_gateway_client.ApiClient = None
-
+    channel:CreateChannelDto = None
+    
     def setUp(self):
-        
-        # Create Channel API instance for testing
-        fqcn = "channel.for.testing"
-
         self.api_client = ddhub_gateway_client.ApiClient(self.configuration)
         self.api_instance =  ChannelsApi(self.api_client)
-        
-        # for some reason this doesn't work and I get the same errors as in topic tests but when I comment it out other tests work
-        # self.channel= self.api_instance.channel_controller_create(
-        #     create_channel_dto= CreateChannelDto(
-        #         fqcn=fqcn,
-        #         payload_encryption=False,
-        #         type="pub",
-        #         conditions=ChannelConditionsDto(
-        #             dids=[],
-        #             roles=[],
-        #             topics=[],
-        #         )
-        #     )
-        # )
-        # print("Created channel: " + self.channel)
+        ccdto = construct_create_channel_dto()
+        self.channel = self.api_instance.channel_controller_create(ccdto)
         
     def tearDown(self):
-        # if self.channel is not None:
-        #     print("Deleting channel: " + self.channel)
-        #     self.api_instance.channel_controller_delete(fqcn = self.channel.fqcn)
-        #     self.channel = None
+        if self.channel is not None:
+            self.api_instance.channel_controller_delete(fqcn = self.channel["fqcn"])
+            self.channel = None
         self.api_client.close()
 
     def test_channel_controller_create(self):
         """Test case for channel_controller_create
-
         """
-        
         fqcn = str(uuid.uuid4()).replace("-", ".")
-
         response_body, response_status, response_headers = \
             self.api_instance.channel_controller_create(
             create_channel_dto= CreateChannelDto(
@@ -77,15 +68,12 @@ class TestChannelsApi(unittest.TestCase):
             ),
             _return_http_data_only=False
         )
-
         self.assertEqual(response_status, 201)
-        
         self.api_instance.channel_controller_delete(fqcn = fqcn)
 
 
     def test_channel_controller_delete(self):
         """Test case for channel_controller_delete
-
         """
         fqcn = str(uuid.uuid4()).replace("-", ".")
         self.api_instance.channel_controller_create(
@@ -101,49 +89,37 @@ class TestChannelsApi(unittest.TestCase):
             ),
             _return_http_data_only=False
         )
-
         response_body, response_status, response_headers = \
             self.api_instance.channel_controller_delete(
             fqcn=fqcn,
             _return_http_data_only=False
         )
-        
-        # Should be 204 according to the API spec
         self.assertEqual(response_status, 200)
-        # Not documented but should be true
-        # self.assertIsInstance(response_body, DeleteChannel)
-        
         
     def test_channel_controller_get_invalid_fqcn(self):
         """Test case for channel_controller_get_invalid_fqcn
-
         """
         invalid_fqcn = "invalid_fqcn"
         with self.assertRaises(ApiException):
             self.api_instance.channel_controller_get(fqcn=invalid_fqcn)
-        
         non_existing_fqcn = "non.existing.fqcn"
         with self.assertRaises(ApiException):
             self.api_instance.channel_controller_get(fqcn=non_existing_fqcn)
 
-        
     def test_channel_controller_get(self):
         """Test case for channel_controller_get
-
         """
         response_body, response_status, response_headers = \
         self.api_instance.channel_controller_get(
-            fqcn="testing.channel.0099",
+            fqcn=self.channel["fqcn"],
             _return_http_data_only=False
         )
-        
         self.assertEqual(response_status, 200)
         self.assertIsInstance(response_body, GetChannelResponseDto)
  
 
     def test_channel_controller_get_by_type(self):
         """Test case for channel_controller_get_by_type
-
         """
         channel_type = "sub"
         response_sub_tuple = self.api_instance.channel_controller_get_by_type(
@@ -177,10 +153,8 @@ class TestChannelsApi(unittest.TestCase):
         
     def test_channel_controller_get_by_invalid_type(self):
         """Test case for channel_controller_get_by_invalid_type
-        
         """
         channel_type = "invalid"
-
         with self.assertRaises(ApiValueError):
             self.api_instance.channel_controller_get_by_type(
                 type=channel_type
@@ -188,11 +162,10 @@ class TestChannelsApi(unittest.TestCase):
             
     def test_channel_controller_get_qualified_dids(self):
         """Test case for channel_controller_get_qualified_dids
-
         """
         response_body, response_status, response_headers = \
         self.api_instance.channel_controller_get_qualified_dids(
-            fqcn="testing.channel.0099",
+            fqcn=self.channel["fqcn"],
             _return_http_data_only=False
         )
         self.assertEqual(response_status, 200)
@@ -201,7 +174,6 @@ class TestChannelsApi(unittest.TestCase):
 
     def test_channel_controller_refresh_did(self):
         """Test case for channel_controller_refresh_did
-
         """
         response_body, response_status, response_headers = \
         self.api_instance.channel_controller_refresh_did(
@@ -212,7 +184,6 @@ class TestChannelsApi(unittest.TestCase):
 
     def test_channel_controller_update(self):
         """Test case for channel_controller_update
-
         """
         ucdto = UpdateChannelDto(
             type="sub",
@@ -225,13 +196,12 @@ class TestChannelsApi(unittest.TestCase):
         )
         response_body, response_status, response_headers = \
         self.api_instance.channel_controller_update(
-            fqcn="testing.channel.0099",
+            fqcn=self.channel["fqcn"],
             update_channel_dto=ucdto,
             _return_http_data_only=False
         )
         self.assertEqual(response_status, 200)
         self.assertIsInstance(response_body, dict)
-        
         ucdto = UpdateChannelDto(
             type="sub",
             payload_encryption=True,
@@ -242,10 +212,9 @@ class TestChannelsApi(unittest.TestCase):
             )
         )
         self.api_instance.channel_controller_update(
-            fqcn="testing.channel.0099",
+            fqcn=self.channel["fqcn"],
             update_channel_dto=ucdto,
         )
         
-
 if __name__ == '__main__':
     unittest.main()
