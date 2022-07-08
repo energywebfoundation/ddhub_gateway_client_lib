@@ -11,7 +11,6 @@ import unittest
 
 import ddhub_gateway_client
 from ddhub_gateway_client.model.topic_dto import TopicDto
-globals()['TopicDto'] = TopicDto
 from ddhub_gateway_client.model.channel_conditions_dto import ChannelConditionsDto
 
 
@@ -29,19 +28,8 @@ class TestChannelConditionsDto(unittest.TestCase):
         pass
 
     def testChannelConditionsDto(self):
-        with self.assertRaises(TypeError):
-            model = ChannelConditionsDto(
-                dids = [
-                    "did:ethr:volta:0x552761011ea5b332605Bc1Cc2020A4a4f8C738CD"
-                ],
-                # roles=[
-                #     "topiccreator",
-                #     "user"
-                # ],
-                topics=[
-                    self.topic_dto
-                ]
-                )  # noqa: E501
+        """Test ChannelConditionsDto"""
+        pass
 
 
 if __name__ == '__main__':
