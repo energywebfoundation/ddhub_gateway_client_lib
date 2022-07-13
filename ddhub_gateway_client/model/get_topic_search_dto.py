@@ -92,6 +92,7 @@ class GetTopicSearchDto(ModelNormal):
             'name': (str,),  # noqa: E501
             'schema_type': (str,),  # noqa: E501
             'owner': (str,),  # noqa: E501
+            'version': (str,),  # noqa: E501
             'tags': ([str],),  # noqa: E501
             'created_date': (str,),  # noqa: E501
             'updated_date': (str,),  # noqa: E501
@@ -107,6 +108,7 @@ class GetTopicSearchDto(ModelNormal):
         'name': 'name',  # noqa: E501
         'schema_type': 'schemaType',  # noqa: E501
         'owner': 'owner',  # noqa: E501
+        'version': 'version',  # noqa: E501
         'tags': 'tags',  # noqa: E501
         'created_date': 'createdDate',  # noqa: E501
         'updated_date': 'updatedDate',  # noqa: E501
@@ -119,7 +121,7 @@ class GetTopicSearchDto(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, schema_type, owner, tags, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, name, schema_type, owner, version, tags, *args, **kwargs):  # noqa: E501
         """GetTopicSearchDto - a model defined in OpenAPI
 
         Args:
@@ -127,6 +129,7 @@ class GetTopicSearchDto(ModelNormal):
             name (str): name of the topic
             schema_type (str): schema type of the topic
             owner (str): owner of the topic
+            version (str): version of the topic
             tags ([str]): tags of the topic
 
         Keyword Args:
@@ -193,6 +196,7 @@ class GetTopicSearchDto(ModelNormal):
         self.name = name
         self.schema_type = schema_type
         self.owner = owner
+        self.version = version
         self.tags = tags
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -214,7 +218,7 @@ class GetTopicSearchDto(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, schema_type, owner, tags, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, name, schema_type, owner, version, tags, *args, **kwargs):  # noqa: E501
         """GetTopicSearchDto - a model defined in OpenAPI
 
         Args:
@@ -222,6 +226,7 @@ class GetTopicSearchDto(ModelNormal):
             name (str): name of the topic
             schema_type (str): schema type of the topic
             owner (str): owner of the topic
+            version (str): version of the topic
             tags ([str]): tags of the topic
 
         Keyword Args:
@@ -286,6 +291,7 @@ class GetTopicSearchDto(ModelNormal):
         self.name = name
         self.schema_type = schema_type
         self.owner = owner
+        self.version = version
         self.tags = tags
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

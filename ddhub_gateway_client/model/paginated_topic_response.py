@@ -88,9 +88,9 @@ class PaginatedTopicResponse(ModelNormal):
         lazy_import()
         return {
             'count': (int,),  # noqa: E501
+            'records': ([GetTopicSearchDto],),  # noqa: E501
             'limit': (int,),  # noqa: E501
             'page': (int,),  # noqa: E501
-            'records': ([GetTopicSearchDto],),  # noqa: E501
         }
 
     @cached_property
@@ -100,9 +100,9 @@ class PaginatedTopicResponse(ModelNormal):
 
     attribute_map = {
         'count': 'count',  # noqa: E501
+        'records': 'records',  # noqa: E501
         'limit': 'limit',  # noqa: E501
         'page': 'page',  # noqa: E501
-        'records': 'records',  # noqa: E501
     }
 
     read_only_vars = {
@@ -112,13 +112,11 @@ class PaginatedTopicResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, count, limit, page, records, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, count, records, *args, **kwargs):  # noqa: E501
         """PaginatedTopicResponse - a model defined in OpenAPI
 
         Args:
             count (int): total number of channels
-            limit (int): limit of channels
-            page (int): page number out of total pages
             records ([GetTopicSearchDto]): Topics records
 
         Keyword Args:
@@ -152,6 +150,8 @@ class PaginatedTopicResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            limit (int): limit of channels. [optional] if omitted the server will use the default value of 5  # noqa: E501
+            page (int): page number out of total pages. [optional] if omitted the server will use the default value of 1  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -180,8 +180,6 @@ class PaginatedTopicResponse(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.count = count
-        self.limit = limit
-        self.page = page
         self.records = records
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -203,13 +201,11 @@ class PaginatedTopicResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, count, limit, page, records, *args, **kwargs):  # noqa: E501
+    def __init__(self, count, records, *args, **kwargs):  # noqa: E501
         """PaginatedTopicResponse - a model defined in OpenAPI
 
         Args:
             count (int): total number of channels
-            limit (int): limit of channels
-            page (int): page number out of total pages
             records ([GetTopicSearchDto]): Topics records
 
         Keyword Args:
@@ -243,6 +239,8 @@ class PaginatedTopicResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            limit (int): limit of channels. [optional] if omitted the server will use the default value of 5  # noqa: E501
+            page (int): page number out of total pages. [optional] if omitted the server will use the default value of 1  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -269,8 +267,6 @@ class PaginatedTopicResponse(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.count = count
-        self.limit = limit
-        self.page = page
         self.records = records
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

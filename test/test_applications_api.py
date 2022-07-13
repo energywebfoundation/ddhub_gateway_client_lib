@@ -29,6 +29,12 @@ class TestApplicationsApi(unittest.TestCase):
         """
         pass
 
+    def test_applications_controller_get_applications_by_namespace(self):
+        """Test case for applications_controller_get_applications_by_namespace
+
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()
