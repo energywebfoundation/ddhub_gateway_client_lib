@@ -14,7 +14,7 @@ import uuid
 import ddhub_gateway_client
 from ddhub_gateway_client.exceptions import ApiException, ApiValueError
 from ddhub_gateway_client.api.channels_api import ChannelsApi  # noqa: E501
-from ddhub_gateway_client.models import CreateChannelDto, ChannelConditionsDto, GetChannelResponseDto, GetChannelQualifiedDidsDto, UpdateChannelDto
+from ddhub_gateway_client.models import CreateChannelDto, ChannelConditionsDto, GetChannelResponseDto, GetChannelQualifiedDidsDto, UpdateChannelDto, TopicDto
 
 
 def construct_create_channel_dto():
@@ -50,28 +50,77 @@ class TestChannelsApi(unittest.TestCase):
             self.channel = None
         self.api_client.close()
 
-    def test_channel_controller_create(self):
+    def test_channel_controller_create_basic(self):
         """Test case for channel_controller_create
         """
+        for payload_encryption in [True, False]:
+            fqcn = str(uuid.uuid4()).replace("-", ".")
+            response_body, response_status, response_headers = \
+                self.api_instance.channel_controller_create(
+                create_channel_dto= CreateChannelDto(
+                    fqcn=fqcn,
+                    payload_encryption=payload_encryption,
+                    type="sub",
+                    conditions=ChannelConditionsDto(
+                        dids=[],
+                        roles=[],
+                        topics=[],
+                    )
+                ),
+                _return_http_data_only=False
+            )
+            self.assertEqual(response_status, 201)
+            self.api_instance.channel_controller_delete(fqcn = fqcn)
+        
+    def test_channel_controller_create_valid_types(self):
+        """Test case for channel_controller_create_valid_types
+        """
+        valid_types = ["pub", "sub", "download", "upload"]
+        for channel_type in valid_types:
+            response_body, response_status, response_headers = \
+            self.api_instance.channel_controller_create(
+                create_channel_dto= CreateChannelDto(
+                    fqcn=str(uuid.uuid4()).replace("-", "."),
+                    payload_encryption=True,
+                    type=channel_type,
+                    conditions=ChannelConditionsDto(
+                        dids=[],
+                        roles=[],
+                        topics=[],
+                    )
+                ),
+                _return_http_data_only=False
+            )
+            self.assertEqual(response_status, 201)
+            self.api_instance.channel_controller_delete(fqcn = response_body["fqcn"])
+            
+    def test_channel_controller_create_with_conditions(self):
+        """Test case for channel_controller_create_with_conditions
+        """
+        
+        tdto = TopicDto(
+            topic_name="Topic_JSON_V12",
+            owner="testing01.apps.aemotest.iam.ewc"
+        )
+        
         fqcn = str(uuid.uuid4()).replace("-", ".")
         response_body, response_status, response_headers = \
-            self.api_instance.channel_controller_create(
+        self.api_instance.channel_controller_create(
             create_channel_dto= CreateChannelDto(
                 fqcn=fqcn,
                 payload_encryption=True,
-                type="pub",
+                type="sub",
                 conditions=ChannelConditionsDto(
-                    dids=[],
+                    dids=["did:ethr:volta:0x552761011ea5b332605Bc1Cc2020A4a4f8C738CD"],
                     roles=[],
-                    topics=[],
+                    topics=[tdto]
                 )
             ),
             _return_http_data_only=False
-        )
+        )        
         self.assertEqual(response_status, 201)
-        self.api_instance.channel_controller_delete(fqcn = fqcn)
-
-
+        self.api_instance.channel_controller_delete(fqcn = fqcn) 
+            
     def test_channel_controller_delete(self):
         """Test case for channel_controller_delete
         """
