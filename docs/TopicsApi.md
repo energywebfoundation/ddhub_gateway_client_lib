@@ -327,7 +327,7 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
     api_instance = topics_api.TopicsApi(api_client)
     keyword = "Topic_JSON_V12" # str | 
     owner = "ddhub.apps.energyweb.iam.ewc" # str |  (optional)
-    limit = 1 # int |  (optional) if omitted the server will use the default value of 0
+    limit = 1 # int |  (optional) if omitted the server will use the default value of 5
     page = 1 # int |  (optional) if omitted the server will use the default value of 1
 
     # example passing only required values which don't have defaults set
@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **keyword** | **str**|  |
  **owner** | **str**|  | [optional]
- **limit** | **int**|  | [optional] if omitted the server will use the default value of 0
+ **limit** | **int**|  | [optional] if omitted the server will use the default value of 5
  **page** | **int**|  | [optional] if omitted the server will use the default value of 1
 
 ### Return type
@@ -468,10 +468,20 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = topics_api.TopicsApi(api_client)
     id = "62545547fe37f174d7715ff3" # str | id of the topic
+    limit = 1 # int |  (optional) if omitted the server will use the default value of 0
+    page = 1 # int |  (optional) if omitted the server will use the default value of 0
 
     # example passing only required values which don't have defaults set
     try:
         api_response = api_instance.topics_controller_get_topics_history_by_id(id)
+        pprint(api_response)
+    except ddhub_gateway_client.ApiException as e:
+        print("Exception when calling TopicsApi->topics_controller_get_topics_history_by_id: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        api_response = api_instance.topics_controller_get_topics_history_by_id(id, limit=limit, page=page)
         pprint(api_response)
     except ddhub_gateway_client.ApiException as e:
         print("Exception when calling TopicsApi->topics_controller_get_topics_history_by_id: %s\n" % e)
@@ -483,6 +493,8 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| id of the topic |
+ **limit** | **int**|  | [optional] if omitted the server will use the default value of 0
+ **page** | **int**|  | [optional] if omitted the server will use the default value of 0
 
 ### Return type
 

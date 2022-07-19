@@ -398,6 +398,8 @@ class TopicsApi(object):
             params_map={
                 'all': [
                     'id',
+                    'limit',
+                    'page',
                 ],
                 'required': [
                     'id',
@@ -417,12 +419,20 @@ class TopicsApi(object):
                 'openapi_types': {
                     'id':
                         (str,),
+                    'limit':
+                        (int,),
+                    'page':
+                        (int,),
                 },
                 'attribute_map': {
                     'id': 'id',
+                    'limit': 'limit',
+                    'page': 'page',
                 },
                 'location_map': {
                     'id': 'path',
+                    'limit': 'query',
+                    'page': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -942,7 +952,7 @@ class TopicsApi(object):
 
         Keyword Args:
             owner (str): [optional]
-            limit (int): [optional] if omitted the server will use the default value of 0
+            limit (int): [optional] if omitted the server will use the default value of 5
             page (int): [optional] if omitted the server will use the default value of 1
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
@@ -1098,6 +1108,8 @@ class TopicsApi(object):
             id (str): id of the topic
 
         Keyword Args:
+            limit (int): [optional] if omitted the server will use the default value of 0
+            page (int): [optional] if omitted the server will use the default value of 0
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

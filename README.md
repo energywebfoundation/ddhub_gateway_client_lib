@@ -79,6 +79,7 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ApplicationsApi* | [**applications_controller_get_applications**](docs/ApplicationsApi.md#applications_controller_get_applications) | **GET** /api/v2/applications | 
+*ApplicationsApi* | [**applications_controller_get_applications_by_namespace**](docs/ApplicationsApi.md#applications_controller_get_applications_by_namespace) | **GET** /api/v2/applications/{namespace} | 
 *ChannelsApi* | [**channel_controller_create**](docs/ChannelsApi.md#channel_controller_create) | **POST** /api/v2/channels | 
 *ChannelsApi* | [**channel_controller_delete**](docs/ChannelsApi.md#channel_controller_delete) | **DELETE** /api/v2/channels/{fqcn} | 
 *ChannelsApi* | [**channel_controller_get**](docs/ChannelsApi.md#channel_controller_get) | **GET** /api/v2/channels/{fqcn} | 

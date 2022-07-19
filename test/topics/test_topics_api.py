@@ -40,7 +40,7 @@ def constructPostTopicBodyDto() -> PostTopicBodyDto :
             'required':['rrp',]
         }),
         version="0.0.1",
-        owner="testing01.apps.aemotest.iam.ewc",
+        owner="libtesting.apps.aresguerre.iam.ewc",
         tags=['test_tag']
     )
         
@@ -50,7 +50,7 @@ class TestTopicsApi(unittest.TestCase):
     configuration = ddhub_gateway_client.Configuration(
         host = "https://ddhub-gateway-dev.energyweb.org"
     )
-    owner = "testing01.apps.aemotest.iam.ewc"
+    owner = "libtesting.apps.aresguerre.iam.ewc"
     api_client:ddhub_gateway_client.ApiClient = None
     topic:PostTopicDto = None
 
@@ -343,7 +343,7 @@ class TestTopicsApi(unittest.TestCase):
             schema_type="JSD7",
             schema="{\}",
             version="0.0.1",
-            owner="testing01.apps.aemotest.iam.ewc",
+            owner="libtesting.apps.aresguerre.iam.ewc",
             tags=['test_tag']
             )
         with self.assertRaises(ApiException):

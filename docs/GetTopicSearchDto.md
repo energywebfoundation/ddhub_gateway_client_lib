@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **str** | name of the topic | 
 **schema_type** | **str** | schema type of the topic | 
 **owner** | **str** | owner of the topic | 
+**version** | **str** | version of the topic | 
 **tags** | **[str]** | tags of the topic | 
 **created_date** | **str** | timestamp of the topic updated | [optional] 
 **updated_date** | **str** | timestamp of the topic updated | [optional] 

@@ -64,6 +64,8 @@ class CronResponseDto(ModelNormal):
             'APPLICATIONS_REFRESH': "APPLICATIONS_REFRESH",
             'HEARTBEAT': "HEARTBEAT",
             'FILE_CLEANER': "FILE_CLEANER",
+            'EVENTS': "EVENTS",
+            'ROLES_REFRESH': "ROLES_REFRESH",
         },
         ('latest_status',): {
             'SUCCESS': "SUCCESS",
