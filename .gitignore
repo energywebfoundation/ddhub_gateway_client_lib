@@ -67,3 +67,6 @@ target/
 
 # Pipenv 
 Pipfile
+
+# Env 
+.env

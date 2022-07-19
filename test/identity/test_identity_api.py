@@ -9,11 +9,17 @@
 
 
 import unittest
+import os
+from py_dotenv import read_dotenv
 
 import ddhub_gateway_client
 from ddhub_gateway_client.api.identity_api import IdentityApi
+from ddhub_gateway_client.model.create_identity_dto import CreateIdentityDto
 from ddhub_gateway_client.model.identity_response_dto import IdentityResponseDto  # noqa: E501
 
+
+dotenv_path = os.path.join(os.path.abspath('./'), '.env')
+read_dotenv(dotenv_path)
 
 class TestIdentityApi(unittest.TestCase):
     """IdentityApi unit test stubs"""
@@ -51,7 +57,7 @@ class TestIdentityApi(unittest.TestCase):
             )
 
         self.assertEqual(200,api_response_status)
-        
+
         self.assertIsInstance(api_response_body, dict)
         
         self.assertNotEqual(None, api_response_body.get("claims"))
@@ -60,7 +66,26 @@ class TestIdentityApi(unittest.TestCase):
         """Test case for identity_controller_post
 
         """
-        pass
+        private_key:str = os.getenv("PRIVATE_KEY")
+
+        createIdentityDto = CreateIdentityDto()
+
+        api_response_body, api_response_status, api_response_headers = \
+            self.api_instance.identity_controller_post(
+                createIdentityDto,
+                _return_http_data_only=False
+            )
+
+        self.assertEqual(200,api_response_status)
+
+        self.assertIsInstance(api_response_body, IdentityResponseDto)
+
+        api_response:IdentityResponseDto = self.api_instance.identity_controller_get()
+        
+        self.assertEqual(api_response.address, api_response_body.address)
+
+        createOldIdentityDto = CreateIdentityDto(private_key=private_key)
+        self.api_instance.identity_controller_post(createOldIdentityDto)
 
 
 if __name__ == '__main__':
