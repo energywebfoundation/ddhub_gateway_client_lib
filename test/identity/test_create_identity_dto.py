@@ -26,9 +26,10 @@ class TestCreateIdentityDto(unittest.TestCase):
 
     def testCreateIdentityDto(self):
         """Test CreateIdentityDto"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = CreateIdentityDto()  # noqa: E501
-        pass
+        model = CreateIdentityDto()
+
+        pk = "0x38c54494ca8b4c1d235af7936aff04e2f27d4807f690ca1effb169073ec2635a"
+        model_pk = CreateIdentityDto(private_key = pk)
 
 
 if __name__ == '__main__':
