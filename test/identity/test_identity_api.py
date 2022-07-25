@@ -17,9 +17,10 @@ from ddhub_gateway_client.api.identity_api import IdentityApi
 from ddhub_gateway_client.model.create_identity_dto import CreateIdentityDto
 from ddhub_gateway_client.model.identity_response_dto import IdentityResponseDto  # noqa: E501
 
-
-dotenv_path = os.path.join(os.path.abspath('./'), '.env')
-read_dotenv(dotenv_path)
+env_path = os.path.join(os.path.abspath('./'), '.env')
+if os.path.exists(env_path):
+    dotenv_path = os.path.join(os.path.abspath('./'), '.env')
+    read_dotenv(dotenv_path)
 
 class TestIdentityApi(unittest.TestCase):
     """IdentityApi unit test stubs"""

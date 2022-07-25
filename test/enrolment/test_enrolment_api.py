@@ -18,8 +18,10 @@ from ddhub_gateway_client.api.enrolment_api import EnrolmentApi
 from ddhub_gateway_client.model.create_identity_dto import CreateIdentityDto  # noqa: E501
 
 
-dotenv_path = os.path.join(os.path.abspath('./'), '.env')
-read_dotenv(dotenv_path)
+env_path =  os.path.join(os.path.abspath('./'), '.env')
+if os.path.exists(env_path):
+    dotenv_path = os.path.join(os.path.abspath('./'), '.env')
+    read_dotenv(dotenv_path)
 
 class TestEnrolmentApi(unittest.TestCase):
     """EnrolmentApi unit test stubs"""
