@@ -341,7 +341,7 @@ class TestTopicsApi(unittest.TestCase):
         post_topic_body_dto = PostTopicBodyDto(
             name="Topic_JSON_test_py_2",
             schema_type="JSD7",
-            schema="{\}",
+            schema="",
             version="0.0.1",
             owner="libtesting.apps.aresguerre.iam.ewc",
             tags=['test_tag']
