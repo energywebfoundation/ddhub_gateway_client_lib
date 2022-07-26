@@ -18,10 +18,6 @@ class TestChannelConditionsDto(unittest.TestCase):
     """ChannelConditionsDto unit test stubs"""
 
     def setUp(self):
-        self.topic_dto = TopicDto(
-            topic_name="Topic_JSON_test_py",
-            owner="testing01.apps.aemotest.iam.ewc",
-        )
         pass
 
     def tearDown(self):
@@ -29,7 +25,17 @@ class TestChannelConditionsDto(unittest.TestCase):
 
     def testChannelConditionsDto(self):
         """Test ChannelConditionsDto"""
-        pass
+        topic_dto = TopicDto(
+            topic_name="Topic_JSON_test_py",
+            owner="testing01.apps.aemotest.iam.ewc",
+        )
+        dids = ["did:ethr:volta:0x09Df5d33f1242E1b8aA5E0E0F6BfA687E6846993"]
+        roles = ["user.roles.ddhub.apps.energyweb.iam.ewc"]
+        topics = [topic_dto]
+        model = ChannelConditionsDto(
+            dids=dids,
+            roles= roles,
+            topics= topics)
 
 
 if __name__ == '__main__':

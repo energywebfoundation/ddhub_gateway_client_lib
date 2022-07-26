@@ -13,6 +13,7 @@ import unittest
 
 import ddhub_gateway_client
 from ddhub_gateway_client.model.channel_conditions_dto import ChannelConditionsDto
+from ddhub_gateway_client.model.topic_dto import TopicDto
 globals()['ChannelConditionsDto'] = ChannelConditionsDto
 from ddhub_gateway_client.model.update_channel_dto import UpdateChannelDto
 
@@ -28,9 +29,24 @@ class TestUpdateChannelDto(unittest.TestCase):
 
     def testUpdateChannelDto(self):
         """Test UpdateChannelDto"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = UpdateChannelDto()  # noqa: E501
-        pass
+        dids = ["did:ethr:volta:0x09Df5d33f1242E1b8aA5E0E0F6BfA687E6846993"]
+        roles = ["user.roles.ddhub.apps.energyweb.iam.ewc"]
+        topic_dto = TopicDto(
+            topic_name="Topic_JSON_test_py",
+            owner="testing01.apps.aemotest.iam.ewc",
+        )
+        topics = [topic_dto]
+        channel_condition_dto = ChannelConditionsDto(
+            dids=dids,
+            roles= roles,
+            topics= topics)
+        
+        model = UpdateChannelDto(
+            type="sub",
+            payload_encryption=True,
+            conditions=channel_condition_dto
+        )
+            
 
 
 if __name__ == '__main__':

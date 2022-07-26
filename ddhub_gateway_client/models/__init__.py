@@ -19,6 +19,7 @@ from ddhub_gateway_client.model.cron_response_dto import CronResponseDto
 from ddhub_gateway_client.model.delete_topic import DeleteTopic
 from ddhub_gateway_client.model.details import Details
 from ddhub_gateway_client.model.enrolment_dto import EnrolmentDto
+from ddhub_gateway_client.model.gateway_response_dto import GatewayResponseDto
 from ddhub_gateway_client.model.get_channel_qualified_dids_dto import GetChannelQualifiedDidsDto
 from ddhub_gateway_client.model.get_channel_response_dto import GetChannelResponseDto
 from ddhub_gateway_client.model.get_messages_response_dto import GetMessagesResponseDto

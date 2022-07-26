@@ -89,6 +89,7 @@ Class | Method | HTTP request | Description
 *ChannelsApi* | [**channel_controller_update**](docs/ChannelsApi.md#channel_controller_update) | **PUT** /api/v2/channels/{fqcn} | 
 *EnrolmentApi* | [**enrolment_controller_get**](docs/EnrolmentApi.md#enrolment_controller_get) | **GET** /api/v2/enrol | 
 *EnrolmentApi* | [**enrolment_controller_init**](docs/EnrolmentApi.md#enrolment_controller_init) | **POST** /api/v2/enrol | 
+*GatewayApi* | [**gateway_controller_get**](docs/GatewayApi.md#gateway_controller_get) | **GET** /api/v2/gateway | 
 *GatewayConfigurationApi* | [**certificate_controller_save**](docs/GatewayConfigurationApi.md#certificate_controller_save) | **POST** /api/v2/certificate | 
 *GatewayConfigurationApi* | [**keys_controller_derive**](docs/GatewayConfigurationApi.md#keys_controller_derive) | **POST** /api/v2/keys | 
 *HealthApi* | [**health_controller_check**](docs/HealthApi.md#health_controller_check) | **GET** /api/v2/health | 
@@ -124,6 +125,7 @@ Class | Method | HTTP request | Description
  - [DeleteTopic](docs/DeleteTopic.md)
  - [Details](docs/Details.md)
  - [EnrolmentDto](docs/EnrolmentDto.md)
+ - [GatewayResponseDto](docs/GatewayResponseDto.md)
  - [GetChannelQualifiedDidsDto](docs/GetChannelQualifiedDidsDto.md)
  - [GetChannelResponseDto](docs/GetChannelResponseDto.md)
  - [GetMessagesResponseDto](docs/GetMessagesResponseDto.md)
