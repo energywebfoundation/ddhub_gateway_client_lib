@@ -17,6 +17,7 @@
 from ddhub_gateway_client.api.applications_api import ApplicationsApi
 from ddhub_gateway_client.api.channels_api import ChannelsApi
 from ddhub_gateway_client.api.enrolment_api import EnrolmentApi
+from ddhub_gateway_client.api.gateway_api import GatewayApi
 from ddhub_gateway_client.api.gateway_configuration_api import GatewayConfigurationApi
 from ddhub_gateway_client.api.health_api import HealthApi
 from ddhub_gateway_client.api.identity_api import IdentityApi
