@@ -1,6 +1,5 @@
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 ddhub_gateway_client/__init__.py
@@ -120,7 +119,6 @@ test/test_delete_topic.py
 test/test_details.py
 test/test_enrolment_api.py
 test/test_enrolment_dto.py
-test/test_gateway_api.py
 test/test_gateway_response_dto.py
 test/test_get_channel_qualified_dids_dto.py
 test/test_get_channel_response_dto.py
@@ -138,9 +136,11 @@ test/test_post_topic_dto.py
 test/test_put_topic_dto.py
 test/test_recipients.py
 test/test_role_dto.py
+test/test_status.py
 test/test_topic_count_dto.py
 test/test_topic_dto.py
 test/test_topics_api.py
+test/test_update_channel_dto.py
 test/test_update_topic_body_dto.py
 test/test_update_topic_history_body_dto.py
 tox.ini

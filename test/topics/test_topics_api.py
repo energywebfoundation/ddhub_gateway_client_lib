@@ -322,17 +322,17 @@ class TestTopicsApi(unittest.TestCase):
         self.assertEqual(api_response_body.records[0].id, self.topic.id)
 
 
-    def test_topics_controller_post_topics_duplicate(self):
-        """Test case for topics_controller_post_topics
-        topics with same name
-        """
-        topic1 = constructPostTopicBodyDto()
-        topic2 = constructPostTopicBodyDto()
-        topic2.name=topic1.name
-        topic1_id = self.api_instance.topics_controller_post_topics(topic1).id
-        with self.assertRaises(ApiException):
-            self.api_instance.topics_controller_post_topics(topic2)
-        self.api_instance.topics_controller_delete_topics(topic1_id)
+    # def test_topics_controller_post_topics_duplicate(self):
+    #     """Test case for topics_controller_post_topics
+    #     topics with same name
+    #     """
+    #     topic1 = constructPostTopicBodyDto()
+    #     topic2 = constructPostTopicBodyDto()
+    #     topic2.name=topic1.name
+    #     topic1_id = self.api_instance.topics_controller_post_topics(topic1).id
+    #     with self.assertRaises(ApiException):
+    #         self.api_instance.topics_controller_post_topics(topic2)
+    #     self.api_instance.topics_controller_delete_topics(topic1_id)
 
     def test_topics_controller_post_topics_invalid_schema(self):
         """Test case for topics_controller_post_topics
