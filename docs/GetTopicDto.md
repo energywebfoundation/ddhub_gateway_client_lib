@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **id** | **str** | id of the topic | 
 **name** | **str** | name of the topic | 
 **schema_type** | **str** | schema type of the topic | 
+**schema** | **str** | schema of the topic | 
 **version** | **str** | version of the topic | 
 **owner** | **str** | owner of the topic | 
 **tags** | **[str]** | tags of the topic | 

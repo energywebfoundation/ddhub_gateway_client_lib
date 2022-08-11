@@ -91,6 +91,7 @@ class GetTopicDto(ModelNormal):
             'id': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'schema_type': (str,),  # noqa: E501
+            'schema': (str,),  # noqa: E501
             'version': (str,),  # noqa: E501
             'owner': (str,),  # noqa: E501
             'tags': ([str],),  # noqa: E501
@@ -105,6 +106,7 @@ class GetTopicDto(ModelNormal):
         'id': 'id',  # noqa: E501
         'name': 'name',  # noqa: E501
         'schema_type': 'schemaType',  # noqa: E501
+        'schema': 'schema',  # noqa: E501
         'version': 'version',  # noqa: E501
         'owner': 'owner',  # noqa: E501
         'tags': 'tags',  # noqa: E501
@@ -117,13 +119,14 @@ class GetTopicDto(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, schema_type, version, owner, tags, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, name, schema_type, schema, version, owner, tags, *args, **kwargs):  # noqa: E501
         """GetTopicDto - a model defined in OpenAPI
 
         Args:
             id (str): id of the topic
             name (str): name of the topic
             schema_type (str): schema type of the topic
+            schema (str): schema of the topic
             version (str): version of the topic
             owner (str): owner of the topic
             tags ([str]): tags of the topic
@@ -189,6 +192,7 @@ class GetTopicDto(ModelNormal):
         self.id = id
         self.name = name
         self.schema_type = schema_type
+        self.schema = str(schema)
         self.version = version
         self.owner = owner
         self.tags = tags
@@ -212,13 +216,14 @@ class GetTopicDto(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, schema_type, version, owner, tags, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, name, schema_type, schema, version, owner, tags, *args, **kwargs):  # noqa: E501
         """GetTopicDto - a model defined in OpenAPI
 
         Args:
             id (str): id of the topic
             name (str): name of the topic
             schema_type (str): schema type of the topic
+            schema (str): schema of the topic
             version (str): version of the topic
             owner (str): owner of the topic
             tags ([str]): tags of the topic
@@ -282,6 +287,7 @@ class GetTopicDto(ModelNormal):
         self.id = id
         self.name = name
         self.schema_type = schema_type
+        self.schema = str(schema)
         self.version = version
         self.owner = owner
         self.tags = tags
