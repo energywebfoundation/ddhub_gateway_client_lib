@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | name of the topic | 
-**schema_type** | **str** | schema type of the topic | 
-**schema** | **str** | schema of the topic | 
-**version** | **str** | version of the topic | 
-**owner** | **str** | owner of the topic | 
+**schema_type** | **str** | schema type of the topic | `JSD7` or `CSV` 
+**schema** | **str** | schema of the topic | left empty for file transfer topics
+**version** | **str** | version of the topic | semantic versioning format 
+**owner** | **str** | owner of the topic | switchboard application namespace
 **tags** | **[str]** | tags of the topic | 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
