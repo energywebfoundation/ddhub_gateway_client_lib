@@ -5,14 +5,14 @@
 ### New private key sign up.
 
   In order to use the DDHub client gateway, the user must provide a private key and enroll to the default role.
-[signup_script.py](examples/signup_script.py) is an example of a private key sign up.
+[signup_script.py](signup_script.py) is an example of a private key sign up.
 
   _Note: the role enrollment should be approved to be able to use DDHub._
 
 ### Topic creation
 
   To create a Topic the DID used must enroll to the `topiccreator` role of the owner app.
-  The Topic's fields are described [here](docs/PostTopicBodyDto.md).
+  The Topic's fields are described [here](../docs/PostTopicBodyDto.md).
 
   ```python
   import json
@@ -55,7 +55,7 @@
   )
   ```
 
-  Channel fields are described [here](docs/CreateChannelDto.md).
+  Channel fields are described [here](../docs/CreateChannelDto.md).
 
   ```python
   example_publisher_channel:CreateChannelDto=CreateChannelDto(
@@ -72,7 +72,7 @@
   ```
   _Note: topics in Channel Conditions should be registered topics_
 
-  [Create_channel.py](examples/create_channel.py) creates Topic and a Channel.
+  [Create_channel.py](create_channel.py) creates Topic and a Channel.
 
   ### Messaging
 
