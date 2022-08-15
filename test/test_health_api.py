@@ -37,7 +37,7 @@ class TestHealthApi(unittest.TestCase):
             )
         self.assertIn(api_response_status, [200, 503])
 
-        self.assertIsNotNone(api_response_body["status"])
+        self.assertIsNotNone(api_response_body)
 
 
 if __name__ == '__main__':
