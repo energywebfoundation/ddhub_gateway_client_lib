@@ -11,35 +11,35 @@
 import unittest
 
 import ddhub_gateway_client
-from ddhub_gateway_client.api.default_api import DefaultApi
-from ddhub_gateway_client.model.cron_response_dto import CronResponseDto  # noqa: E501
+from ddhub_gateway_client.api.gateway_api import GatewayApi
+from ddhub_gateway_client.model.gateway_response_dto import GatewayResponseDto  # noqa: E501
 
 
-class TestDefaultApi(unittest.TestCase):
-    """DefaultApi unit test stubs"""
+class TestGatewayApi(unittest.TestCase):
+    """GatewayApi unit test stubs"""
     configuration = ddhub_gateway_client.Configuration(
         host = "https://ddhub-gateway-dev.energyweb.org"
     )
 
     def setUp(self):
         self.api_client = ddhub_gateway_client.ApiClient(self.configuration)
-        self.api_instance =  DefaultApi(self.api_client)
+        self.api_instance =  GatewayApi(self.api_client)
 
     def tearDown(self):
         self.api_client.close()
 
-    def test_cron_controller_get_jobs_results(self):
-        """Test case for cron_controller_get_jobs_results
+    def test_gateway_controller_get(self):
+        """Test case for gateway_controller_get
 
         """
         api_response_body, api_response_status, api_response_headers = \
-            self.api_instance.cron_controller_get_jobs_results(
+            self.api_instance.gateway_controller_get(
                 _return_http_data_only=False
             )
         
         self.assertEqual(200,api_response_status)
 
-        self.assertIsInstance(api_response_body, (list,CronResponseDto))
+        self.assertIsInstance(api_response_body, GatewayResponseDto)
 
 
 if __name__ == '__main__':

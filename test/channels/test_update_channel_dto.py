@@ -15,11 +15,11 @@ import ddhub_gateway_client
 from ddhub_gateway_client.model.channel_conditions_dto import ChannelConditionsDto
 from ddhub_gateway_client.model.topic_dto import TopicDto
 globals()['ChannelConditionsDto'] = ChannelConditionsDto
-from ddhub_gateway_client.model.create_channel_dto import CreateChannelDto
+from ddhub_gateway_client.model.update_channel_dto import UpdateChannelDto
 
 
-class TestCreateChannelDto(unittest.TestCase):
-    """CreateChannelDto unit test stubs"""
+class TestUpdateChannelDto(unittest.TestCase):
+    """UpdateChannelDto unit test stubs"""
 
     def setUp(self):
         pass
@@ -27,9 +27,8 @@ class TestCreateChannelDto(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testCreateChannelDto(self):
-        """Test CreateChannelDto"""
-        fqcn = "test.pub.channel"
+    def testUpdateChannelDto(self):
+        """Test UpdateChannelDto"""
         dids = ["did:ethr:volta:0x09Df5d33f1242E1b8aA5E0E0F6BfA687E6846993"]
         roles = ["user.roles.ddhub.apps.energyweb.iam.ewc"]
         topic_dto = TopicDto(
@@ -41,13 +40,13 @@ class TestCreateChannelDto(unittest.TestCase):
             dids=dids,
             roles= roles,
             topics= topics)
-            
-        model = CreateChannelDto(
-            fqcn=fqcn,
-            payload_encryption=False,
+        
+        model = UpdateChannelDto(
             type="sub",
+            payload_encryption=True,
             conditions=channel_condition_dto
         )
+            
 
 
 if __name__ == '__main__':

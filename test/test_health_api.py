@@ -16,18 +16,28 @@ from ddhub_gateway_client.api.health_api import HealthApi  # noqa: E501
 
 class TestHealthApi(unittest.TestCase):
     """HealthApi unit test stubs"""
+    configuration = ddhub_gateway_client.Configuration(
+        host = "https://ddhub-gateway-dev.energyweb.org"
+    )
 
     def setUp(self):
-        self.api = HealthApi()  # noqa: E501
+        self.api_client = ddhub_gateway_client.ApiClient(self.configuration)
+        self.api_instance =  HealthApi(self.api_client)
 
     def tearDown(self):
-        pass
+        self.api_client.close()
 
     def test_health_controller_check(self):
         """Test case for health_controller_check
 
         """
-        pass
+        api_response_body, api_response_status, api_response_headers = \
+            self.api_instance.health_controller_check(
+                _return_http_data_only=False
+            )
+        self.assertIn(api_response_status, [200, 503])
+
+        self.assertIsNotNone(api_response_body["status"])
 
 
 if __name__ == '__main__':

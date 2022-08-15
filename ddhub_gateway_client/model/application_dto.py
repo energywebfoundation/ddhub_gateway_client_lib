@@ -89,7 +89,7 @@ class ApplicationDTO(ModelNormal):
             'updated_date': (str,),  # noqa: E501
             'namespace': (str,),  # noqa: E501
             'roles': ([str],),  # noqa: E501
-            'topics_count': (int,),  # noqa: E501
+            'topics_count': (float,),  # noqa: E501
         }
 
     @cached_property
@@ -128,7 +128,7 @@ class ApplicationDTO(ModelNormal):
             updated_date (str): When application got stored in cache
             namespace (str): application namespace
             roles ([str]): application assigned roles
-            topics_count (int): number of topics
+            topics_count (float): number of topics
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -229,7 +229,7 @@ class ApplicationDTO(ModelNormal):
             updated_date (str): When application got stored in cache
             namespace (str): application namespace
             roles ([str]): application assigned roles
-            topics_count (int): number of topics
+            topics_count (float): number of topics
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

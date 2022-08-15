@@ -1,6 +1,5 @@
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 ddhub_gateway_client/__init__.py
@@ -9,6 +8,7 @@ ddhub_gateway_client/api/applications_api.py
 ddhub_gateway_client/api/channels_api.py
 ddhub_gateway_client/api/default_api.py
 ddhub_gateway_client/api/enrolment_api.py
+ddhub_gateway_client/api/gateway_api.py
 ddhub_gateway_client/api/gateway_configuration_api.py
 ddhub_gateway_client/api/health_api.py
 ddhub_gateway_client/api/identity_api.py
@@ -29,6 +29,7 @@ ddhub_gateway_client/model/cron_response_dto.py
 ddhub_gateway_client/model/delete_topic.py
 ddhub_gateway_client/model/details.py
 ddhub_gateway_client/model/enrolment_dto.py
+ddhub_gateway_client/model/gateway_response_dto.py
 ddhub_gateway_client/model/get_channel_qualified_dids_dto.py
 ddhub_gateway_client/model/get_channel_response_dto.py
 ddhub_gateway_client/model/get_messages_response_dto.py
@@ -69,7 +70,9 @@ docs/DeleteTopic.md
 docs/Details.md
 docs/EnrolmentApi.md
 docs/EnrolmentDto.md
+docs/GatewayApi.md
 docs/GatewayConfigurationApi.md
+docs/GatewayResponseDto.md
 docs/GetChannelQualifiedDidsDto.md
 docs/GetChannelResponseDto.md
 docs/GetMessagesResponseDto.md
@@ -112,23 +115,20 @@ test/test_channels_api.py
 test/test_create_channel_dto.py
 test/test_create_identity_dto.py
 test/test_cron_response_dto.py
-test/test_default_api.py
 test/test_delete_topic.py
 test/test_details.py
 test/test_enrolment_api.py
 test/test_enrolment_dto.py
-test/test_gateway_configuration_api.py
+test/test_gateway_response_dto.py
 test/test_get_channel_qualified_dids_dto.py
 test/test_get_channel_response_dto.py
 test/test_get_messages_response_dto.py
 test/test_get_topic_dto.py
 test/test_get_topic_search_dto.py
-test/test_health_api.py
 test/test_identity_api.py
 test/test_identity_response_dto.py
 test/test_inline_response200.py
 test/test_inline_response503.py
-test/test_messaging_api.py
 test/test_paginated_response.py
 test/test_paginated_topic_response.py
 test/test_post_topic_body_dto.py
@@ -136,8 +136,6 @@ test/test_post_topic_dto.py
 test/test_put_topic_dto.py
 test/test_recipients.py
 test/test_role_dto.py
-test/test_send_message_dto.py
-test/test_send_messagel_response_dto.py
 test/test_status.py
 test/test_topic_count_dto.py
 test/test_topic_dto.py
