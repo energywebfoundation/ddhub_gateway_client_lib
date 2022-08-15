@@ -55,6 +55,10 @@ class GatewayResponseDto(ModelNormal):
     """
 
     allowed_values = {
+        ('message_broker_status',): {
+            'OK': "OK",
+            'ERROR': "ERROR",
+        },
     }
 
     validations = {
@@ -81,6 +85,9 @@ class GatewayResponseDto(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'did': (str,),  # noqa: E501
+            'message_broker_status': (str,),  # noqa: E501
+            'mtls_is_valid': (bool,),  # noqa: E501
             'namespace': (str,),  # noqa: E501
         }
 
@@ -90,6 +97,9 @@ class GatewayResponseDto(ModelNormal):
 
 
     attribute_map = {
+        'did': 'did',  # noqa: E501
+        'message_broker_status': 'messageBrokerStatus',  # noqa: E501
+        'mtls_is_valid': 'mtlsIsValid',  # noqa: E501
         'namespace': 'namespace',  # noqa: E501
     }
 
@@ -100,10 +110,13 @@ class GatewayResponseDto(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, namespace, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, did, message_broker_status, mtls_is_valid, namespace, *args, **kwargs):  # noqa: E501
         """GatewayResponseDto - a model defined in OpenAPI
 
         Args:
+            did (str): Configured DID
+            message_broker_status (str): Checks if the message broker is configured and running correctly
+            mtls_is_valid (bool): Checks if the gateway is configured correctly to use mTLS (if mTLS is enabled)
             namespace (str): Configured namespace
 
         Keyword Args:
@@ -164,6 +177,9 @@ class GatewayResponseDto(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.did = did
+        self.message_broker_status = message_broker_status
+        self.mtls_is_valid = mtls_is_valid
         self.namespace = namespace
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -185,10 +201,13 @@ class GatewayResponseDto(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, namespace, *args, **kwargs):  # noqa: E501
+    def __init__(self, did, message_broker_status, mtls_is_valid, namespace, *args, **kwargs):  # noqa: E501
         """GatewayResponseDto - a model defined in OpenAPI
 
         Args:
+            did (str): Configured DID
+            message_broker_status (str): Checks if the message broker is configured and running correctly
+            mtls_is_valid (bool): Checks if the gateway is configured correctly to use mTLS (if mTLS is enabled)
             namespace (str): Configured namespace
 
         Keyword Args:
@@ -247,6 +266,9 @@ class GatewayResponseDto(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.did = did
+        self.message_broker_status = message_broker_status
+        self.mtls_is_valid = mtls_is_valid
         self.namespace = namespace
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

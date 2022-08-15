@@ -62,6 +62,13 @@ class GetMessagesResponseDto(ModelNormal):
             'CSV': "CSV",
             'TSV': "TSV",
         },
+        ('signature_valid',): {
+            'FAILED': "FAILED",
+            'NOT_PERFORMED': "NOT_PERFORMED",
+            'NOT_REQUIRED': "NOT_REQUIRED",
+            'REQUIRED_NOT_PERFORMED': "REQUIRED_NOT_PERFORMED",
+            'SUCCESS': "SUCCESS",
+        },
     }
 
     validations = {
@@ -98,7 +105,7 @@ class GetMessagesResponseDto(ModelNormal):
             'sender': (str,),  # noqa: E501
             'timestamp_nanos': (float,),  # noqa: E501
             'transaction_id': (str,),  # noqa: E501
-            'signature_valid': (bool,),  # noqa: E501
+            'signature_valid': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -138,10 +145,10 @@ class GetMessagesResponseDto(ModelNormal):
             topic_schema_type (str): schema type of the topic
             payload (str): Payload sent to message
             signature (str): signature sent to message
-            sender (str): signature sent to message
-            timestamp_nanos (float): signature sent to message
+            sender (str): message sender
+            timestamp_nanos (float): timestamp in nano seconds
             transaction_id (str): transactionId sent to message for idempotency
-            signature_valid (bool): transactionId sent to message for idempotency
+            signature_valid (str): Encryption status for a message
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -243,10 +250,10 @@ class GetMessagesResponseDto(ModelNormal):
             topic_schema_type (str): schema type of the topic
             payload (str): Payload sent to message
             signature (str): signature sent to message
-            sender (str): signature sent to message
-            timestamp_nanos (float): signature sent to message
+            sender (str): message sender
+            timestamp_nanos (float): timestamp in nano seconds
             transaction_id (str): transactionId sent to message for idempotency
-            signature_valid (bool): transactionId sent to message for idempotency
+            signature_valid (str): Encryption status for a message
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
