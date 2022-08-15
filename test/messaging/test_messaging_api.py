@@ -36,7 +36,7 @@ class TestMessagingApi(unittest.TestCase):
         """Test case for message_controlller_create
 
         """
-        
+
         api_response_body, api_response_status, api_response_headers = \
         self.api_instance.message_controlller_create(
             SendMessageDto(
@@ -49,26 +49,34 @@ class TestMessagingApi(unittest.TestCase):
             ),
             _return_http_data_only=False
         )
-        
-        # temporary fail caused by endpoint spec missing did from response
-        # TODO regen lib
-        # self.assertEqual(200, api_response_status)
-        # self.assertIsInstance(api_response_body, SendMessagelResponseDto)
-        
-        
-        
+
+        self.assertEqual(200, api_response_status)
+        self.assertIsInstance(api_response_body, SendMessagelResponseDto)
+
+
+
     def test_message_controlller_download_message(self):
         """Test case for message_controlller_download_message
 
         """
+        api_response_body, api_response_status, api_response_headers = \
+        self.api_instance.message_controlller_get_message(
+            fqcn="test.lib.download.channel",
+            _return_http_data_only=False
+        )
+
+        self.assertEqual(200, api_response_status)
+        self.assertIsInstance(api_response_body, (list,GetMessagesResponseDto))
+
+        file_id = json.loads(api_response_body[0].payload)["fileId"]
+
         response_body, response_status, response_headers = \
         self.api_instance.message_controlller_download_message(
-            file_id="62d9660c0367f3122ff4332a",
+            file_id=file_id,
             _return_http_data_only=False
         )
         # MB failure
-        # self.assertEqual(200, response_status)
-
+        self.assertEqual(200, response_status)
 
     def test_message_controlller_get_message(self):
         """Test case for message_controlller_get_message
@@ -76,35 +84,32 @@ class TestMessagingApi(unittest.TestCase):
         """
         api_response_body, api_response_status, api_response_headers = \
         self.api_instance.message_controlller_get_message(
-            fqcn="test.sub.channel",
+            fqcn="test.lib.sub.channel",
             _return_http_data_only=False
         )
-        # temporary fail caused by endpoint spec signatureValid is not bool
-        # TODO regen lib
-        # self.assertEqual(200, api_response_status)
-        # self.assertIsInstance(api_response_body, GetMessagesResponseDto)
+
+        self.assertEqual(200, api_response_status)
+        self.assertIsInstance(api_response_body, (list,GetMessagesResponseDto))
 
 
     def test_message_controlller_upload_file(self):
         """Test case for message_controlller_upload_file
 
         """
-        
+
         file_path = "./test/messaging/files/upload.csv"
-        
+
         response_body, response_status, response_headers = \
         self.api_instance.message_controlller_upload_file(
             file=open(file_path, "rb"),
-            fqcn="test.upload.channel",
-            topic_name="Topic_CSV_LIB_V1",
+            fqcn="test.lib.upload.channel",
+            topic_name="Topic_CSV_LIB_V2",
             topic_version="1.0.0",
             topic_owner=self.owner,
             _return_http_data_only=False
         )
-        # temporary fail caused by endpoint spec
-        # TODO regen lib
-        # self.assertEqual(200, api_response_status)
-        # self.assertIsInstance(api_response_body, SendMessagelResponseDto)
-        
+        self.assertEqual(201, response_status)
+        self.assertIsInstance(response_body, SendMessagelResponseDto)
+
 if __name__ == '__main__':
     unittest.main()
