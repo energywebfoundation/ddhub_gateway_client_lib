@@ -258,8 +258,6 @@ class TestTopicsApi(unittest.TestCase):
 
         self.assertIsInstance(api_response_body, PaginatedResponse)
 
-        self.assertEqual(api_response_body.count,1)
-
 
     def test_topics_controller_get_topics_count_by_owner_invalid_param(self):
         """Test case for topics_controller_get_topics_count_by_owner

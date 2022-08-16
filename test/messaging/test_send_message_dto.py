@@ -8,6 +8,7 @@
 """
 
 
+import json
 import sys
 import unittest
 
@@ -24,11 +25,21 @@ class TestSendMessageDto(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testSendMessageDto(self):
+    def test_send_message_dto(self):
         """Test SendMessageDto"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = SendMessageDto()  # noqa: E501
-        pass
+        fqcn="test.pub.channel"
+        topic_name="Topic_JSON_LIB_V1"
+        topic_version="1.0.0"
+        topic_owner="libtesting.apps.aresguerre.iam.ewc"
+        payload=json.dumps({'data': 42})
+        model = SendMessageDto(
+            fqcn=fqcn,
+            topic_name=topic_name,
+            topic_version=topic_version,
+            topic_owner=topic_owner,
+            transaction_id="112233445566",
+            payload=payload
+        )
 
 
 if __name__ == '__main__':

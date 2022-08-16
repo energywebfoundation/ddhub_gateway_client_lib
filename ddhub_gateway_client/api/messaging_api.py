@@ -89,7 +89,7 @@ class MessagingApi(object):
         )
         self.message_controlller_download_message_endpoint = _Endpoint(
             settings={
-                'response_type': None,
+                'response_type': (file_type,),
                 'auth': [],
                 'endpoint_path': '/api/v2/messages/download',
                 'operation_id': 'message_controlller_download_message',
@@ -129,7 +129,9 @@ class MessagingApi(object):
                 }
             },
             headers_map={
-                'accept': [],
+                'accept': [
+                    'multipart/form-data'
+                ],
                 'content_type': [],
             },
             api_client=api_client
@@ -411,7 +413,7 @@ class MessagingApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            None
+            file_type
                 If the method is called asynchronously, returns the request
                 thread.
         """
