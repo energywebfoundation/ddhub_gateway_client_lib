@@ -68,15 +68,19 @@ class TestMessagingApi(unittest.TestCase):
         self.assertEqual(200, api_response_status)
         self.assertIsInstance(api_response_body, (list,GetMessagesResponseDto))
 
-        file_id = json.loads(api_response_body[0].payload)["fileId"]
+        file_id :str= json.loads(api_response_body[0].payload)["fileId"]
 
         response_body, response_status, response_headers = \
         self.api_instance.message_controlller_download_message(
             file_id=file_id,
             _return_http_data_only=False
         )
-        # MB failure
+        
         self.assertEqual(200, response_status)
+        file_content = response_body.read()
+        self.assertIsInstance(file_content,bytes)
+        with open("./test/messaging/files/"+file_id+".csv", "wb") as file:
+            file.write(file_content)
 
     def test_message_controlller_get_message(self):
         """Test case for message_controlller_get_message
