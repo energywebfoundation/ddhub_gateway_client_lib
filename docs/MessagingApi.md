@@ -86,7 +86,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **message_controlller_download_message**
-> message_controlller_download_message(file_id)
+> file_type message_controlller_download_message(file_id)
 
 
 
@@ -113,7 +113,9 @@ with ddhub_gateway_client.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        api_instance.message_controlller_download_message(file_id)
+        api_response = api_instance.message_controlller_download_message(file_id)
+        with open(file_id+".csv", "wb") as file:
+            file.write(api_response.read())
     except ddhub_gateway_client.ApiException as e:
         print("Exception when calling MessagingApi->message_controlller_download_message: %s\n" % e)
 ```
@@ -127,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**file_type**
 
 ### Authorization
 
@@ -136,7 +138,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: multipart/form-data
 
 
 ### HTTP response details
@@ -312,7 +314,7 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | File Upload Successfully |  -  |
+**201** | File Upload Successfully |  -  |
 **400** | Validation failed or some requirements were not fully satisfied |  -  |
 **401** | Unauthorized |  -  |
 **404** | Channel not found or Topic not found |  -  |

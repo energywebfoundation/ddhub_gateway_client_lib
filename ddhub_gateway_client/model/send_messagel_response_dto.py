@@ -90,9 +90,9 @@ class SendMessagelResponseDto(ModelNormal):
         lazy_import()
         return {
             'client_gateway_message_id': (str,),  # noqa: E501
-            'did': (str,),  # noqa: E501
             'recipients': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
             'status': ([Status],),  # noqa: E501
+            'did': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -102,9 +102,9 @@ class SendMessagelResponseDto(ModelNormal):
 
     attribute_map = {
         'client_gateway_message_id': 'clientGatewayMessageId',  # noqa: E501
-        'did': 'did',  # noqa: E501
         'recipients': 'recipients',  # noqa: E501
         'status': 'status',  # noqa: E501
+        'did': 'did',  # noqa: E501
     }
 
     read_only_vars = {
@@ -114,12 +114,11 @@ class SendMessagelResponseDto(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, client_gateway_message_id, did, recipients, status, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, client_gateway_message_id, recipients, status, *args, **kwargs):  # noqa: E501
         """SendMessagelResponseDto - a model defined in OpenAPI
 
         Args:
             client_gateway_message_id (str): client Gateway Message Id
-            did (str): did
             recipients (bool, date, datetime, dict, float, int, list, str, none_type): recipients
             status ([Status]): status of messages sent
 
@@ -154,6 +153,7 @@ class SendMessagelResponseDto(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            did (str): did. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -182,7 +182,6 @@ class SendMessagelResponseDto(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.client_gateway_message_id = client_gateway_message_id
-        self.did = did
         self.recipients = recipients
         self.status = status
         for var_name, var_value in kwargs.items():
@@ -205,12 +204,11 @@ class SendMessagelResponseDto(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, client_gateway_message_id, did, recipients, status, *args, **kwargs):  # noqa: E501
+    def __init__(self, client_gateway_message_id, recipients, status, *args, **kwargs):  # noqa: E501
         """SendMessagelResponseDto - a model defined in OpenAPI
 
         Args:
             client_gateway_message_id (str): client Gateway Message Id
-            did (str): did
             recipients (bool, date, datetime, dict, float, int, list, str, none_type): recipients
             status ([Status]): status of messages sent
 
@@ -245,6 +243,7 @@ class SendMessagelResponseDto(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            did (str): did. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -271,7 +270,6 @@ class SendMessagelResponseDto(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.client_gateway_message_id = client_gateway_message_id
-        self.did = did
         self.recipients = recipients
         self.status = status
         for var_name, var_value in kwargs.items():
