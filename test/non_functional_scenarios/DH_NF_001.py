@@ -90,10 +90,12 @@ class DHNf001(unittest.TestCase):
             except Exception as e:
                 print(e)
                 if i > 12 and i < 120:
-                    print("Exception:", e)
+                    print("Exception:", str(e))
                     self.assertTrue(True)
                     return
-
+                else:
+                    raise e
+                    
         self.assertTrue(False, "Test failed or client not disconnected")
         
 
