@@ -16,8 +16,6 @@ import pprint
 import random, string
 
 import ddhub_gateway_client
-from ddhub_gateway_client.api.identity_api import IdentityApi
-from ddhub_gateway_client.model.create_identity_dto import CreateIdentityDto
 from ddhub_gateway_client.api.messaging_api import MessagingApi
 from ddhub_gateway_client.model.send_message_dto import SendMessageDto
 
@@ -76,7 +74,7 @@ class DHNf002(unittest.TestCase):
         """Test case for nf_001
         """
 
-        for i in range(1,30):
+        for i in range(1,31):
             sleep(0.2)
             send_message_dto = SendMessageDto(
                                     fqcn="channel.pub.nf.test.001",

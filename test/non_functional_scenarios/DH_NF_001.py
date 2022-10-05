@@ -17,7 +17,6 @@ import random, string
 
 import ddhub_gateway_client
 from ddhub_gateway_client.api.identity_api import IdentityApi
-from ddhub_gateway_client.model.create_identity_dto import CreateIdentityDto
 from ddhub_gateway_client.api.messaging_api import MessagingApi
 from ddhub_gateway_client.model.send_message_dto import SendMessageDto
 
@@ -54,7 +53,6 @@ class DHNf001(unittest.TestCase):
                 sys.stdout.write("Please respond with 'yes' or 'no' \n")
         
         self.api = MessagingApi(ddhub_gateway_client.ApiClient(self.configuration))
-        self.api2 = IdentityApi(ddhub_gateway_client.ApiClient(self.configuration))
         self.api_client = ddhub_gateway_client.ApiClient(self.configuration)
         self.api_instance = MessagingApi(self.api_client)  # noqa: E501
         print("Connecting to: " + self.configuration.host)
@@ -66,7 +64,7 @@ class DHNf001(unittest.TestCase):
         """Test case for nf_001
         """
 
-        for i in range(1,120):
+        for i in range(1,121):
             try:
                 sleep(5)
                 send_message_dto = SendMessageDto(
